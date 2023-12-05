@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/header.css" />
+</head>
+<body>
+    <div th:fragment="loginFragment">
+        <div th:if="${session.userName != null}" class="d-flex align-items-center mb-0">
+            <span class="border border-primary" th:text="${session.userName}"></span>
+            <form action="/logout" method="post">
+                <button type="submit" class="btn btn-secondary btn-sm">로그아웃</button>
+            </form>
+        </div>
+        <th:block th:if="${session.userName == null}">
+            <form action="/login" method="post" class="d-flex align-items-center mb-0" id="loginForm">
+                <button type="button" class="btn btn-primary btn-sm" onclick="showLoginBox()">로그인</button>
+                <a href="/user/regist"><button type="button" class="btn btn-outline-secondary btn-sm">회원가입</button></a>
+            </form>
+        </th:block>
+        <div id="modal-container" class="modal-container">
+            <div id="modal-box" class="modal-box">
+                <form id="loginFormModal" action="/login" method="post">
+                    <input type="text" class="form-control" placeholder="아이디" id="userId" name="userId" />
+                    <input type="password" class="form-control" placeholder="비밀번호" id="password" name="password" />
+                    <button type="submit" class="btn btn-primary btn-sm">로그인</button>
+                    <a href="/user/regist"><button type="button" class="btn btn-outline-secondary btn-sm">회원가입</button></a>
+                </form>
+                <button class="modal-btn btn btn-outline-secondary btn-sm" onclick="hideLoginModal()">취소</button>
+            </div>
+        </div>
+        
+        <script src="/scripts/user/login.js"></script>
+        <script src="/scripts/user/loginError.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="mainFragmentHead">
+        <link rel="stylesheet" href="/styles/main/main.css" />
+    </head>
+    <body>
+        <div th:fragment="mainFragment" id="mainPage">
+            <hr />
+            <div class="container">
+                <div id="content">
+                    <div class="new">
+                        <div class="conwrap">
+                            <div class="tit">
+                                <h2>Hot<br />Product</h2>
+                                <p>가장 인기 많은 자동차들</p>
+                            </div>
+                            <div class="toparea">
+                                <div class="box new1">
+                                    <a href="#">
+                                        <img
+                                            src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_1699945409grwui60w6u.jpg"
+                                            alt=""
+                                            width="392"
+                                            height="205"
+                                        />
+                                        <div class="ondiv">
+                                            <div class="align">
+                                                <div class="cate">PEN</div>
+                                                <div class="name">FX ZETA C3</div>
+                                                <div class="plus">
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box new2">
+                                    <a href="#">
+                                        <img
+                                            src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_169994521784nzg4whv7.jpg"
+                                            alt=""
+                                            width="786"
+                                            height="360"
+                                        />
+                                        <div class="ondiv">
+                                            <div class="align">
+                                                <div class="cate">NOTE</div>
+                                                <div class="name">지퀀스</div>
+                                                <div class="plus">
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="btmarea">
+                                <div class="box new3">
+                                    <a href="#">
+                                        <img
+                                            src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_16999453586u57dzgmw0.jpg"
+                                            alt=""
+                                            width="392"
+                                            height="292"
+                                        />
+                                        <div class="ondiv">
+                                            <div class="align">
+                                                <div class="cate">SHARP</div>
+                                                <div class="name">제니스7샤프</div>
+                                                <div class="plus">
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box new4">
+                                    <a href="#">
+                                        <img
+                                            src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_1681087061mb8i5l6zdx.jpg"
+                                            alt=""
+                                            width="450"
+                                            height="439"
+                                        />
+                                        <div class="ondiv">
+                                            <div class="align">
+                                                <div class="cate">FOUNTAIN PEN</div>
+                                                <div class="name">153 아이디 만년필</div>
+                                                <div class="plus">
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="product" id="our_product">
+                <div class="tit">BEST PRODUCT</div>
+                <p class="tit_btm">인기 자동차 순위</p>
+
+                <div class="c_tabs">
+                    <ul>
+                        <li><a href="#">소형차</a></li>
+                        <li><a href="#">중형차</a></li>
+                        <li><a href="#">대형차</a></li>
+                        <li><a href="#">스포츠카</a></li>
+                    </ul>
+                </div>
+
+                <div class="p_lists">
+                    <ul class="wrapper_ul" style="width: 200px">
+                        <li>
+                            <a href="/product/product_view.php?idx=213&amp;ccode=005005">
+                                <div class="thum">
+                                    <img
+                                        src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/8801067962537_file6_16993368522ze8t9y6ul.jpg"
+                                        alt=""
+                                        width="266"
+                                        height="390"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="cate">프리미엄펜</div>
+                                    <div class="name">153 리스펙트 리파인</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/product/product_view.php?idx=204&amp;ccode=005006">
+                                <div class="thum">
+                                    <img
+                                        src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2040048020_file6_1681086837wink3y4zfr.jpg"
+                                        alt=""
+                                        width="266"
+                                        height="390"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="cate">만년필</div>
+                                    <div class="name">153 아이디 만년필</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/product/product_view.php?idx=188&amp;ccode=005002">
+                                <div class="thum">
+                                    <img
+                                        src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2010152034_file6_1699945497e4wvhszoxy.jpg"
+                                        alt=""
+                                        width="266"
+                                        height="390"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="cate">유성볼펜</div>
+                                    <div class="name">FX ZETA C3</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/product/product_view.php?idx=185&amp;ccode=005002">
+                                <div class="thum">
+                                    <img
+                                        src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2010030001_file6_1635127393stijdjvr99.jpg"
+                                        alt=""
+                                        width="266"
+                                        height="390"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="cate">유성볼펜</div>
+                                    <div class="name">제니스7</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/product/product_view.php?idx=160&amp;ccode=005006">
+                                <div class="thum">
+                                    <img
+                                        src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2040048012_file6_1583298386d4wy0fw22t.jpg"
+                                        alt=""
+                                        width="266"
+                                        height="390"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="cate">만년필</div>
+                                    <div class="name">153 네오 만년필 EF</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/product/product_view.php?idx=130&amp;ccode=005002">
+                                <div class="thum">
+                                    <img
+                                        src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/8801067279536_file6_1552954140c5bul606gc.jpg"
+                                        alt=""
+                                        width="266"
+                                        height="390"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="cate">FX 153</div>
+                                    <div class="name">FX 153</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/product/product_view.php?idx=5&amp;ccode=005002">
+                                <div class="thum">
+                                    <img
+                                        src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2010129001_file6_1584059663fxku9xz5t3.jpg"
+                                        alt=""
+                                        width="266"
+                                        height="390"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="cate">유성볼펜</div>
+                                    <div class="name">FX ZETA</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/product/product_view.php?idx=19&amp;ccode=005005">
+                                <div class="thum">
+                                    <img
+                                        src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2010209001_file6_15106474920b1lr1fhnf.jpg"
+                                        alt=""
+                                        width="266"
+                                        height="390"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="cate">프리미엄펜</div>
+                                    <div class="name">153 블랙 &amp; 화이트</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

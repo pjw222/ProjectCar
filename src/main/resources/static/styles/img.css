@@ -1,0 +1,23 @@
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 150%); 
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-weight:bold;
+}

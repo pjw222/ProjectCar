@@ -1,0 +1,52 @@
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+<head th:fragment="headerFragmentHead">
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="icon" href="/imgs/brandcar.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="/imgs/brandcar.jpg" type="image/x-icon">
+</head>
+<body>
+    <div th:fragment="headerFragment" id="header">
+        <div class="d-flex justify-content-between align-items-center px-2 mt-3">
+            <div></div>
+            <div th:replace="/user/login :: loginFragment"></div>
+        </div>
+        <hr />
+        <nav class="navbar">
+            <div class="logoImg">
+                <a href="/"><img src="imgs/brandcar.jpg" class="logo"/>자동차</a>
+            </div>
+            <ul class="navbar__menu">
+                <li onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
+                    <a href="#">사이트소개</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">브랜드목록</a>
+                </li>
+                <li onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
+                    <a href="#">자동차 판매</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
+                    <a class="navbar-toggler-icon dropstart" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a> 
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">사이트소개</a></li>
+                        <li><a class="dropdown-item" href="#">브랜드목록</a></li>
+                        <li><a class="dropdown-item" href="#">자동차판매</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+            </ul> 
+        </nav>
+        <hr />
+        <script src="scripts/dropdown.js"></script>
+    </div>
+</body>
+</html>
