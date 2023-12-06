@@ -17,7 +17,7 @@
 }
 
 .box {
-    width: 48%; /* 각 이미지가 반응형으로 좀 더 작게 나오도록 설정 */
+    width: 48%;
     margin-bottom: 15px;
     position: relative;
     overflow: hidden;
@@ -60,18 +60,42 @@
     font-size: 16px;
     margin-top: 5px;
 }
-.p_lists ul.wrapper_ul {
+.c_lists ul.wrapper_ul {
     display: flex;
     list-style-type: none;
     padding: 0; 
 
 }
 
-.p_lists ul.wrapper_ul li {
+.c_lists ul.wrapper_ul li {
     margin-right: 10px;
+    border: solid wheat;
+    background-color: darkgray;
+    margin-left: 10px;
 }
-.p_lists ul.wrapper_ul .thum img {
+.c_lists ul.wrapper_ul .thum img {
     width: 100%;
     height: auto; 
     display: block; 
+}
+.c_tabs{
+    text-align: center;
+    display: flex;
+    list-style: none;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+.c_tabs li{
+ border: solid gray;
+ margin: 2px;
+ background-color: gray;
+ font-weight: bold;
+}
+.tit, .tit_btm{
+    text-align: center;
+    font-weight: bold;
+}
+.car_img{
+    width: 30px; 
+    display: inline;
 }

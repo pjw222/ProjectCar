@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="popupFragmentHead">
+  <link rel="stylesheet" href="styles/popup.css">
+</head>
+
+<body>
+  <div th:fragment="popupFragment" id="floatingPopup" class="popup">
+    <button class="close-btn" onclick="closePopup()">X</button>
+    <span class="popup-content">예약하기</span>
+  </div>
+</body>
+
+<script src="scripts/popup.js"></script>
+
+</html>

@@ -14,19 +14,24 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="/styles/index.css" />
     <head th:replace="~{/basic/header :: headerFragmentHead}"></head>
     <head th:replace="~{/basic/modal :: modalFragmentHead}"></head>
     <head th:replace="~{/basic/img :: imgFragmentHead}"></head>
+    <head th:replace="~{/basic/scrollToTop :: scrollFragmentHead}"></head>
+    <head th:replace="~{/basic/popup :: popupFragmentHead}"></head>
     <head th:replace="~{/main/main :: mainFragmentHead}"></head>
     <!-- <head th:replace="~{${path} :: ${contentHead}}"></head> -->
+    <head th:replace="~{/user/regist :: registFragmentHead}"></head>
     <head th:replace="~{/basic/footer :: footerFragmentHead}"></head>
   </head>
   <body>
     <div id="root">
       <div id="header" th:replace="~{/basic/header :: headerFragment}"></div>
       <div id="img" th:replace="~{/basic/img :: imgFragment}"></div>
+      <div id="img" th:replace="~{/basic/scrollToTop :: scrollFragment}"></div>
       <div id="mainPage" th:replace="~{/main/main :: mainFragment}"></div>
+      <div id="floatingPopup" th:replace="~{/basic/popup :: popupFragment}"></div>
+      <div id="content" th:replace="~{/user/regist :: registFragment}"></div>
       <!-- <div id="content" th:insert="~{${path} :: ${content}}"></div> -->
       <div id="modal" th:replace="~{/basic/modal :: modalFragment}"></div>
       <div id="footer" th:replace="~{/basic/footer :: footerFragment}"></div>

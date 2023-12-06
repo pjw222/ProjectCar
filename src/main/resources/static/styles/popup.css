@@ -1,0 +1,33 @@
+.popup {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    bottom: 600px;
+    right: 20px;
+    background: url(/imgs/popupbutton.png) no-repeat;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .close-btn {
+    background-color: transparent; /* 배경 투명 */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px; /* 폰트 크기 조절 */
+    position: absolute;
+    top: 150px;
+    right: 80px;
+  }
+  
