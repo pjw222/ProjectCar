@@ -11,23 +11,26 @@
             <div th:replace="/user/login :: loginFragment"></div>
         </div>
         <hr />
-        <nav class="navbar">
-            <div class="logoImg">
-                <a href="/"><img src="imgs/brandcar.jpg" class="logo"/>자동차</a>
-            </div>
+        <div class="navbar">
+            <div class="logoContainer">
+                <a class="logolink" href="/">
+                    <img src="imgs/brandcar.jpg" class="logo" alt="자동차 로고">
+                    <span class="logoText">자동차</span>
+                </a>
+            </div>            
             <ul class="navbar__menu">
                 <li onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
-                    <a href="#">사이트소개</a>
+                    <a class="linka" href="/intro">사이트소개</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="/intro">사이트소개</a></li>
+                        <li><a class="dropdown-item" href="#">공지사항</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">브랜드목록</a>
+                    <a class="linka" href="#">브랜드목록</a>
                 </li>
                 <li onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
-                    <a href="#">자동차 판매</a>
+                    <a class="linka" href="#">자동차 판매</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -36,7 +39,7 @@
                 <li class="nav-item dropdown" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
                     <a class="navbar-toggler-icon dropstart" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a> 
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">사이트소개</a></li>
+                        <li><a  class="dropdown-item" href="/intro">사이트소개</a></li>
                         <li><a class="dropdown-item" href="#">브랜드목록</a></li>
                         <li><a class="dropdown-item" href="#">자동차판매</a></li>
                     </ul>
@@ -44,7 +47,7 @@
             </ul>
             <ul class="navbar-nav">
             </ul> 
-        </nav>
+        </div>
         <hr />
         <script src="scripts/dropdown.js"></script>
     </div>

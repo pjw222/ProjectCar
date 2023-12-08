@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="introFragmentHead">
+        <link rel="stylesheet" href="styles/intro/intro.css" />
+        <link rel="stylesheet" href="styles/intro/introhead.css" />
+    </head>
+
+    <body>
+        <div class="container" th:fragment="introFragment">
+            <div th:replace="/intro/introhead :: introHeadFragment"></div>
+            <div class="grid-container">
+                <img class="grid-img top" src="imgs/acac.jpg" alt="Image 1" />
+                <div class="text-box right">
+                    <h1>소개 1</h1>
+                    <p>내용 1</p>
+                </div>
+                <div class="text-box left">
+                    <h1>소개 2</h1>
+                    <p>내용 2</p>
+                </div>
+                <img class="grid-img bottom" src="imgs/acac.jpg" alt="Image 4" />
+            </div>
+        </div>
+    </body>
+</html>

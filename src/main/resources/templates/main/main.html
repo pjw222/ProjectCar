@@ -1,21 +1,25 @@
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
     <head th:fragment="mainFragmentHead">
         <link rel="stylesheet" href="/styles/main/main.css" />
+        <head th:fragment="popupFragmentHead">
+            <link rel="stylesheet" href="styles/popup.css">
+        </head>
     </head>
     <body>
         <div th:fragment="mainFragment" id="mainPage">
+            <div th:replace="/basic/popup :: popupFragment"></div>
             <hr />
             <div class="container">
                 <div id="content">
                     <div class="new">
                         <div class="conwrap">
                             <div class="tit">
-                                <h2>Hot<br />Product</h2>
-                                <p>가장 인기 많은 자동차들</p>
+                                <h2 class="fonttype">Hot<br />Product</h2>
+                                <p class="fonttype">가장 인기 많은 자동차들</p>
                             </div>
                             <div class="toparea">
                                 <div class="box new1">
-                                    <a href="#">
+                                    <a class="fonttype" href="#">
                                         <img
                                             src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_1699945409grwui60w6u.jpg"
                                             alt=""
@@ -35,7 +39,7 @@
                                     </a>
                                 </div>
                                 <div class="box new2">
-                                    <a href="#">
+                                    <a class="fonttype" href="#">
                                         <img
                                             src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_169994521784nzg4whv7.jpg"
                                             alt=""
@@ -57,7 +61,7 @@
                             </div>
                             <div class="btmarea">
                                 <div class="box new3">
-                                    <a href="#">
+                                    <a class="fonttype" href="#">
                                         <img
                                             src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_16999453586u57dzgmw0.jpg"
                                             alt=""
@@ -77,7 +81,7 @@
                                     </a>
                                 </div>
                                 <div class="box new4">
-                                    <a href="#">
+                                    <a class="fonttype" href="#">
                                         <img
                                             src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_1681087061mb8i5l6zdx.jpg"
                                             alt=""
@@ -103,22 +107,22 @@
             </div>
             <hr />
             <div class="bestProduct" id="bestProduct">
-                <div class="tit">BEST PRODUCT</div>
-                <p class="tit_btm">인기 자동차 순위</p>
+                <div class="tit" id="fonttype">BEST PRODUCT</div>
+                <p class="tit_btm" id="fonttype">인기 자동차 순위</p>
 
                 <div class="c_tabs">
                     <ul class="c_tabs">
-                        <li><a href="#"><img class="car_img" src="imgs/smallcaricon.png" >소형차</a></li>
-                        <li><a href="#"><img class="car_img" src="imgs/middlecaricon.png" >중형차</a></li>
-                        <li><a href="#"><img class="car_img" src="imgs/bigcaricon.png" >대형차</a></li>
-                        <li><a href="#"><img class="car_img" src="imgs/sportcaricon.png" >스포츠카</a></li>
+                        <li><a class="fonttype" href="#"><img class="car_img" src="imgs/smallcaricon.png" >소형차</a></li>
+                        <li><a class="fonttype" href="#"><img class="car_img" src="imgs/middlecaricon.png" >중형차</a></li>
+                        <li><a class="fonttype" href="#"><img class="car_img" src="imgs/bigcaricon.png" >대형차</a></li>
+                        <li><a class="fonttype" href="#"><img class="car_img" src="imgs/sportcaricon.png" >스포츠카</a></li>
                     </ul>
                 </div>
 
                 <div class="c_lists">
                     <ul class="wrapper_ul" style="width: 100%">
                         <li>
-                            <a href="#">
+                            <a class="fonttype" href="#">
                                 <div class="thum">
                                     <img
                                         src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/8801067962537_file6_16993368522ze8t9y6ul.jpg"
@@ -134,7 +138,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a class="fonttype" href="#">
                                 <div class="thum">
                                     <img
                                         src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2040048020_file6_1681086837wink3y4zfr.jpg"
@@ -150,7 +154,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a class="fonttype" href="#">
                                 <div class="thum">
                                     <img
                                         src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2010152034_file6_1699945497e4wvhszoxy.jpg"
@@ -166,7 +170,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a class="fonttype" href="#">
                                 <div class="thum">
                                     <img
                                         src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2010030001_file6_1635127393stijdjvr99.jpg"
@@ -182,7 +186,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a class="fonttype" href="#">
                                 <div class="thum">
                                     <img
                                         src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2040048012_file6_1583298386d4wy0fw22t.jpg"
@@ -198,7 +202,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a class="fonttype" href="#">
                                 <div class="thum">
                                     <img
                                         src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/8801067279536_file6_1552954140c5bul606gc.jpg"
@@ -214,7 +218,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a class="fonttype" href="#">
                                 <div class="thum">
                                     <img
                                         src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2010129001_file6_1584059663fxku9xz5t3.jpg"
@@ -230,7 +234,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a class="fonttype" href="#">
                                 <div class="thum">
                                     <img
                                         src="https://dfrkkcv2hg1jc.cloudfront.net/data/product/2010209001_file6_15106474920b1lr1fhnf.jpg"

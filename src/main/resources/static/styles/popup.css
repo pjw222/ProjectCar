@@ -5,6 +5,7 @@
     bottom: 600px;
     right: 20px;
     background: url(/imgs/popupbutton.png) no-repeat;
+    background-size: cover; /* 이미지를 커버하도록 설정 */
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -16,7 +17,9 @@
   
   .popup-content {
     display: block;
-    margin-bottom: 10px;
+    position: relative;
+    top: 110px; /* 조절된 값으로 변경 */
+    user-select: none; /* 드래그 안되게 변경 */
   }
   
   .close-btn {
@@ -28,6 +31,6 @@
     font-size: 16px; /* 폰트 크기 조절 */
     position: absolute;
     top: 150px;
-    right: 80px;
+    right: 85px;
   }
   

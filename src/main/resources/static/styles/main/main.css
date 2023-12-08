@@ -84,18 +84,29 @@
     list-style: none;
     margin: 0 auto;
     margin-bottom: 5px;
+    user-select: none;
 }
 .c_tabs li{
  border: solid gray;
  margin: 2px;
  background-color: gray;
  font-weight: bold;
+ user-select: none;
 }
 .tit, .tit_btm{
     text-align: center;
     font-weight: bold;
+    user-select: none;
+    font-size: 40px;
 }
 .car_img{
     width: 30px; 
     display: inline;
+}
+.fonttype, #fonttype{
+    font-family: 'Nanum Pen Script', cursive;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+
 }
