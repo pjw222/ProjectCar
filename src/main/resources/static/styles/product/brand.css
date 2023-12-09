@@ -1,0 +1,51 @@
+.container {
+    width: 1000px;
+    height: 1000px;
+    margin-top: 148px;
+}
+.selectBrand {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    user-select: none;
+}
+
+.selectBrand li {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 1rem;
+    width: 10%;
+    margin: 1px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    font-weight: 600;
+    font-size: 30px;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+.selectBrand li.th-hyundai {
+    background-color: rgb(126, 90, 224);
+}
+.selectBrand li.th-kia {
+    background-color: rgb(126, 90, 224);
+}
+.selectBrand li.th-samsung {
+    background-color: rgb(126, 90, 224);
+}
+.selectBrand li.th-chevorlet {
+    background-color: rgb(126, 90, 224);
+}
+.selectBrand li.th-ssangyong {
+    background-color: rgb(126, 90, 224);
+}
+.selectBrand li.th-porshe {
+    background-color: rgb(126, 90, 224);
+}
+.selectBrand li.th-bmw {
+    background-color: rgb(126, 90, 224);
+}
+.selectBrand li.th-lambo {
+    background-color: rgb(126, 90, 224);
+}
+
+

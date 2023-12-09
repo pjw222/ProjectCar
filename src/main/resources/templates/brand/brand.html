@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="brandFragmentHead">
+        <link rel="stylesheet" href="styles/brand/brand.css" />
+        <link rel="stylesheet" href="styles/brand/brandhead.css" />
+    </head>
+
+    <body>
+        <div class="container" th:fragment="brandFragment">
+            <div th:replace="/brand/brandhead :: brandHeadFragment"></div>
+
+            <div class="brand" th:onclick="'location.href=\'/product/brand/hyundai\''">
+                <img class="brand-logo" src="imgs/brand/hyundai.png" /> 현대 보러가기
+            </div>
+            <div class="brand" th:onclick="'location.href=\'/product/brand/kia\''">
+                <img class="brand-logo" src="imgs/brand/kia.png" /> 기아 보러가기
+            </div>
+            <div class="brand" th:onclick="'location.href=\'/product/brand/samsung\''">
+                <img class="brand-logo" src="imgs/brand/samsung.png" /> 르노삼성 보러가기
+            </div>
+            <div class="brand" th:onclick="'location.href=\'/product/brand/chevorlet\''">
+                <img class="brand-logo" src="imgs/brand/chevorlet.png" />쉐보레 보러가기
+            </div>
+            <div class="brand" th:onclick="'location.href=\'/product/brand/ssangyong\''">
+                <img class="brand-logo" src="imgs/brand/ssangyong.png" /> 쌍용 보러가기
+            </div>
+            <div class="brand" th:onclick="'location.href=\'/product/brand/porshe\''">
+                <img class="brand-logo" src="imgs/brand/porshe.png" /> 포르쉐 보러가기
+            </div>
+            <div class="brand" th:onclick="'location.href=\'/product/brand/bmw\''">
+                <img class="brand-logo" src="imgs/brand/bmw.png" /> BMW 보러가기
+            </div>
+            <div class="brand" th:onclick="'location.href=\'/product/brand/lambo\''">
+                <img class="brand-logo" src="imgs/brand/lambo.png" /> 람보르기니 보러가기
+            </div>
+        </div>
+    </body>
+</html>

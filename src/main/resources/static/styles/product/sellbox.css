@@ -1,0 +1,17 @@
+.sell {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+.sell-box {
+    height: 250px;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 200px;
+}
+.sell-img{
+    width: 100%;
+    padding: 5px;
+}

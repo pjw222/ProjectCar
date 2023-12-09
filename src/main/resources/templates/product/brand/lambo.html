@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="brandFragmentHead">
+        <link rel="stylesheet" th:href="@{/styles/product/brand.css}" />
+        <link rel="stylesheet" th:href="@{/styles/product/producthead.css}" />
+        <link rel="stylesheet" th:href="@{/styles/product/sellbox.css}" />
+    </head>
+
+
+    <body>
+        <div class="container" th:fragment="lamboFragment">
+            <div th:replace="/product/brand/brand :: brandFragment"></div>
+        </div>
+    </body>
+</html>

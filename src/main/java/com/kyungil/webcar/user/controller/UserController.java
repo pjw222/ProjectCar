@@ -9,7 +9,7 @@ public class UserController {
 	
 	@GetMapping("/regist")
 	public String getRegist(Model model) {
-		model.addAttribute("title", "게시판");
+		model.addAttribute("title", "회원가입");
 		model.addAttribute("imgPath", "/user/registImg");
 		model.addAttribute("imgContent", "registImgFragment");
 		model.addAttribute("imgContentHead", "registImgFragmentHead");

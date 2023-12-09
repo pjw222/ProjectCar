@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="sizeFragmentHead">  
+        <link rel="stylesheet" th:href="@{/styles/product/producthead.css}" />
+        <link rel="stylesheet" th:href="@{/styles/product/sellbox.css}" />
+    </head>
+
+    <body>
+        <div class="container" th:fragment="middlecarFragment">
+            <div th:replace="/product/size/size :: sizeFragment"></div>
+        </div>
+    </body>
+</html>

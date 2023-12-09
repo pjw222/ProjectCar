@@ -1,0 +1,53 @@
+.container {
+    width: 1000px;
+    height: 1000px;
+    margin-top: 148px;
+}
+.item-box {
+    margin: auto;
+    width: 463.95px;
+    text-align: center;
+    border: 1px solid black;
+    user-select: none;
+    margin-bottom: 5px;
+}
+
+.selectPage {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    user-select: none;
+}
+
+.selectPage li {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 1rem;
+    width: 19%;
+    margin: 1px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    font-weight: 600;
+    font-size: 30px;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+.selectPage li.th-brand {
+    background-color: rgb(126, 90, 224);
+}
+.selectPage li.th-smallcar {
+    background-color: rgb(126, 90, 224);
+}
+.selectPage li.th-middlecar {
+    background-color: rgb(126, 90, 224);
+}
+.selectPage li.th-bigcar {
+    background-color: rgb(126, 90, 224);
+}
+.selectPage li.th-sportscar {
+    background-color: rgb(126, 90, 224);
+}
+.item-img{
+    width:100%;
+    height:100%;
+}

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head> </head>
+
+    <body>
+        <div th:fragment="brandFragment">
+            <div th:replace="/product/producthead :: productFragmentHead"></div>
+            <div th:replace="/product/brand/selectbrand :: selectBrandFragment"></div>
+            <div th:replace="/product/sellpage :: sellpageFragment"></div>
+        </div>
+    </body>
+</html>

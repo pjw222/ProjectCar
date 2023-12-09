@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head> </head>
+    <body>
+        <div th:fragment="productFragmentHead" class="item">
+            <div class="item-box">
+                <img class="item-img" th:src="@{/imgs/carsell.png}" />
+            </div>
+            <ul class="selectPage">
+                <li th:class="${pageType == '/product/brand' ? 'th-brand' : ''}" th:onclick="'location.href=\'/product/brand/hyundai\''">브랜드 별 모음</li>
+                <li th:class="${pageType == '/product/smallcar' ? 'th-smallcar' : ''}" th:onclick="'location.href=\'/product/smallcar\''">소형차</li>
+                <li th:class="${pageType == '/product/middlecar' ? 'th-middlecar' : ''}" th:onclick="'location.href=\'/product/middlecar\''">중형차</li>
+                <li th:class="${pageType == '/product/bigcar' ? 'th-bigcar' : ''}" th:onclick="'location.href=\'/product/bigcar\''">대형차</li>
+                <li th:class="${pageType == '/product/sportscar' ? 'th-sportscar' : ''}" th:onclick="'location.href=\'/product/sportscar\''">스포츠카</li>
+            </ul>
+        </div>
+    </body>
+</html>

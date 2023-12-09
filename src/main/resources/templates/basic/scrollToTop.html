@@ -1,11 +1,12 @@
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
     <head th:fragment="scrollFragmentHead">
-        <link rel="stylesheet" href="/styles/scroll.css" />
-</head>
-<body>
-    <div th:fragment="scrollFragment" id="scroll">
-        <img id="upimg" src="imgs/up.png" onclick="scrollToTop()" />
-    <script src="scripts/scroll.js"></script>
-    </div>
-</body>
+        <link rel="stylesheet" th:href="@{/styles/scroll.css}" />
+    </head>
+    <body>
+        <div th:fragment="scrollFragment" id="scroll">
+            <img id="upimg" th:src="@{/imgs/up.png}" onclick="scrollToTop()" />
+
+            <script th:src="@{/scripts/scroll.js}"></script>
+        </div>
+    </body>
 </html>

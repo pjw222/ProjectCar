@@ -10,7 +10,7 @@ public class MainController {
 	@GetMapping("/")
 	public String main(Model model) {
 		
-		model.addAttribute("title", "게시판");
+		model.addAttribute("title", "메인페이지");
 		model.addAttribute("imgPath", "/basic/img");
 		model.addAttribute("imgContent", "imgFragment");
 		model.addAttribute("imgContentHead", "imgFragmentHead");

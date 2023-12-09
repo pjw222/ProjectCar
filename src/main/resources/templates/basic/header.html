@@ -14,7 +14,7 @@
         <div class="navbar">
             <div class="logoContainer">
                 <a class="logolink" href="/">
-                    <img src="imgs/brandcar.jpg" class="logo" alt="자동차 로고">
+                    <img th:src="@{/imgs/brandcar.jpg}" class="logo" alt="자동차 로고">
                     <span class="logoText">자동차</span>
                 </a>
             </div>            
@@ -23,25 +23,28 @@
                     <a class="linka" href="/intro">사이트소개</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/intro">사이트소개</a></li>
-                        <li><a class="dropdown-item" href="#">공지사항</a></li>
+                        <li><a class="dropdown-item" href="/notice">공지사항</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="linka" href="#">브랜드목록</a>
+                    <a class="linka" href="/brand">브랜드목록</a>
                 </li>
                 <li onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
-                    <a class="linka" href="#">자동차 판매</a>
+                    <a class="linka" href="/product/brand/hyundai">자동차 판매</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="/product/brand/hyundai">브랜드별 모음</a></li>
+                        <li><a class="dropdown-item" href="/product/smallcar">소형차</a></li>
+                        <li><a class="dropdown-item" href="/product/middlecar">중형차</a></li>
+                        <li><a class="dropdown-item" href="/product/bigcar">대형차</a></li>
+                        <li><a class="dropdown-item" href="/product/sportscar">스포츠카</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
                     <a class="navbar-toggler-icon dropstart" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a> 
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a  class="dropdown-item" href="/intro">사이트소개</a></li>
-                        <li><a class="dropdown-item" href="#">브랜드목록</a></li>
-                        <li><a class="dropdown-item" href="#">자동차판매</a></li>
+                        <li><a class="dropdown-item" href="/brand">브랜드목록</a></li>
+                        <li><a class="dropdown-item" href="/product/brand/hyundai">자동차판매</a></li>
                     </ul>
                 </li>
             </ul>
@@ -49,7 +52,7 @@
             </ul> 
         </div>
         <hr />
-        <script src="scripts/dropdown.js"></script>
+        <script th:src="@{/scripts/dropdown.js}"></script>
     </div>
 </body>
 </html>

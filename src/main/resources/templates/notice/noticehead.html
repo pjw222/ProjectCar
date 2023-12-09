@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head> </head>
+    <body>
+        <div th:fragment="noticeHeadFragment" class="item">
+            <div class="item-box">
+                <img src="imgs/animg.png" />
+            </div>
+            <ul class="selectPage">
+                <li th:class="${pageType == 'intro' ? 'th-intro' : ''}" th:onclick="'location.href=\'/intro\''">사이트소개</li>
+                <li th:class="${pageType == 'notice' ? 'th-notice' : ''}" th:onclick="'location.href=\'/notice\''">공지사항</li>
+            </ul>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head>
+    </head>
+    <body>
+        <div th:fragment="selectBrandFragment">
+            <ul class="selectBrand">
+                <li th:class="${brandType == '/product/brand/hyundai' ? 'th-hyundai' : ''}" th:onclick="'location.href=\'/product/brand/hyundai\''">현대</li>
+                <li th:class="${brandType == '/product/brand/kia' ? 'th-kia' : ''}" th:onclick="'location.href=\'/product/brand/kia\''">기아</li>
+                <li th:class="${brandType == '/product/brand/samsung' ? 'th-samsung' : ''}" th:onclick="'location.href=\'/product/brand/samsung\''">르노삼성</li>
+                <li th:class="${brandType == '/product/brand/chevorlet' ? 'th-chevorlet' : ''}" th:onclick="'location.href=\'/product/brand/chevorlet\''">쉐보레</li>
+                <li th:class="${brandType == '/product/brand/ssangyong' ? 'th-ssangyong' : ''}" th:onclick="'location.href=\'/product/brand/ssangyong\''">쌍용</li>
+                <li th:class="${brandType == '/product/brand/porshe' ? 'th-porshe' : ''}" th:onclick="'location.href=\'/product/brand/porshe\''">포르쉐</li>
+                <li th:class="${brandType == '/product/brand/bmw' ? 'th-bmw' : ''}" th:onclick="'location.href=\'/product/brand/bmw\''">BMW</li>
+                <li th:class="${brandType == '/product/brand/lambo' ? 'th-lambo' : ''}" th:onclick="'location.href=\'/product/brand/lambo\''">람보르기니</li>
+            </ul>
+        </div>
+    </body>
+</html>
