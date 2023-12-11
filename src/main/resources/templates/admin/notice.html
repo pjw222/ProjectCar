@@ -1,0 +1,152 @@
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="noticeFragmentHead">
+        <link rel="stylesheet" th:href="@{/styles/admin/notice.css}" />
+        <head th:fragment="adminimgFragmentHead">
+            <link rel="stylesheet" th:href="@{/styles/admin/adminimg.css}" />
+        </head>
+    </head>
+    <body>
+        <div th:fragment="noticeFragment" id="adminPage">
+            <div th:replace="/admin/adminimg :: adminimgFragment"></div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>글 작성 시간</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>테이블 제목 1</td>
+                            <td>작성자1</td>
+                            <td>2023-12-09 12:00</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>테이블 제목 2</td>
+                            <td>작성자2</td>
+                            <td>2023-12-09 13:30</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>테이블 제목 3</td>
+                            <td>작성자3</td>
+                            <td>2023-12-09 15:45</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr />
+            <div class="write-button">
+                <a th:href="@{/admin/notice/add}"><button>글작성하기</button></a>
+            </div>
+        </div>
+    </body>
+</html>

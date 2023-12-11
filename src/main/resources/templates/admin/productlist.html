@@ -1,0 +1,63 @@
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="productlistFragmentHead">
+        <link rel="stylesheet" th:href="@{/styles/admin/productlist.css}" />
+        <head th:fragment="adminimgFragmentHead">
+            <link rel="stylesheet" th:href="@{/styles/admin/adminimg.css}" />
+        </head>
+    </head>
+    <body>
+        <div th:fragment="productlistFragment" id="adminPage">
+            <div th:replace="/admin/adminimg :: adminimgFragment"></div>
+            <div class="productlist-container">
+                <ul class="productlist-box">
+                    <form th:action="@{admin/product/delivery}">
+                    <li>
+                        <div class="product-name">예약상품이름</div>
+                        <div class="product-user">예약자</div>
+                        <div class="product-time">예약일자</div>
+                        <div>
+                            <input type="checkbox"  />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product-name">예약상품이름</div>
+                        <div class="product-user">예약자</div>
+                        <div class="product-time">예약일자</div>
+                        <div>
+                            <input type="checkbox"  />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product-name">예약상품이름</div>
+                        <div class="product-user">예약자</div>
+                        <div class="product-time">예약일자</div>
+                        <div>
+                            <input type="checkbox"  />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product-name">예약상품이름</div>
+                        <div class="product-user">예약자</div>
+                        <div class="product-time">예약일자</div>
+                        <div>
+                            <input type="checkbox"  />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product-name">예약상품이름</div>
+                        <div class="product-user">예약자</div>
+                        <div class="product-time">예약일자</div>
+                        <div>
+                            <input type="checkbox"  />
+                        </div>
+                    </li>
+                </ul>
+                <div class="delivery-box">
+                    <button>배송 완료</button>
+                </div>
+            </form>
+            </div>
+            <hr />
+        </div>
+    </body>
+</html>

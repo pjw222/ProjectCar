@@ -1,0 +1,41 @@
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+<head th:fragment="adminheaderFragmentHead">
+    <link rel="stylesheet" th:href="@{/styles/admin/adminheader.css}" />
+    <link rel="icon" th:href="@{/imgs/brandcar.jpg}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/imgs/brandcar.jpg}" type="image/x-icon">
+</head>
+<body>
+    <div th:fragment="adminheaderFragment" id="adminheader">
+        <div class="d-flex justify-content-between align-items-center px-2 mt-3">
+            <div></div>
+            <div th:replace="/user/login :: loginFragment"></div>
+        </div>
+        <hr />
+        <div class="navbar">
+            <div class="logoContainer">
+                <a class="logolink" th:href="@{/admin/notice}">
+                    <img th:src="@{/imgs/brandcar.jpg}" class="logo" alt="자동차 로고">
+                    <span class="logoText">관리자페이지</span>
+                </a>
+            </div>            
+            <ul class="navbar__menu">
+                <li>
+                    <a class="linka" th:href="@{/admin/notice}">공지사항</a>
+                </li>
+                <li>
+                    <a class="linka" th:href="@{/admin/product/add}">상품추가</a>
+                </li>
+                <li >
+                    <a class="linka" th:href="@{/admin/product/list}">예약 상품 조회</a>
+                </li>
+                <li >
+                    <a class="linka" th:href="@{/admin/user/list}">회원 조회</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+            </ul> 
+        </div>
+        <hr />
+    </div>
+</body>
+</html>

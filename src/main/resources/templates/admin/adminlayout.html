@@ -19,22 +19,20 @@
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
         <link rel="stylesheet" th:href="@{/styles/layout.css}" />
 
-        <head th:replace="~{/basic/header :: headerFragmentHead}"></head>
+        <head th:replace="~{/admin/adminheader :: adminheaderFragmentHead}"></head>
         <head th:replace="~{/basic/modal :: modalFragmentHead}"></head>
         <th:block th:if="${imgPath != null}">
             <head th:if="${imgPath != null}" th:replace="~{${imgPath} :: ${imgContentHead}}"></head>
         </th:block>
-        <head th:replace="~{/basic/scrollToTop :: scrollFragmentHead}"></head>
         <head th:replace="~{${path} :: ${contentHead}}"></head>
         <head th:replace="~{/basic/footer :: footerFragmentHead}"></head>
     </head>
     <body>
         <div id="root">
-            <div id="header" th:replace="~{/basic/header :: headerFragment}"></div>
+            <div id="adminheader" th:replace="~{/admin/adminheader :: adminheaderFragment}"></div>
             <th:block th:if="${imgPath != null}">
                 <div th:if="${imgPath != null}" id="contentImg" th:insert="~{${imgPath} :: ${imgContent}}"></div>
             </th:block>
-            <div id="img" th:replace="~{/basic/scrollToTop :: scrollFragment}"></div>
             <div id="content" th:insert="~{${path} :: ${content}}"></div>
             <div id="modal" th:replace="~{/basic/modal :: modalFragment}"></div>
             <div id="footer" th:replace="~{/basic/footer :: footerFragment}"></div>

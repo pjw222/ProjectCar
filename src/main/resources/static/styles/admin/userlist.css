@@ -1,0 +1,30 @@
+.userlist-container {
+    width: 1000px;
+    height: 750px;
+    margin-top: 5px;
+    border: solid 1px black;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.userlist-box {
+    margin-top: 5px;
+    border: solid 2px black;
+    grid-column: 2/8;
+    grid-row: 1/8;
+    list-style: none;
+    padding: 0;
+}
+
+.userlist-box li {
+    margin: 5px;
+    border: solid 1px black; 
+    padding: 10px; 
+    text-align: center;
+}
+.admin-box{
+    margin: auto;
+    grid-column: 8/9;
+    grid-row: 8/9;
+}

@@ -1,0 +1,46 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.table-container {
+    max-height: 500px; /* 전체 테이블의 최대 높이를 500px로 설정 */
+    overflow-y: auto; /* 세로 스크롤을 허용하여 행이 추가되면 스크롤이 나타남 */
+}
+.table-container{
+    width: 100%;
+    margin: auto;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    height: 20px; /* 각 행의 높이를 20px로 설정 */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.item-box {
+    flex: 1;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    user-select: none;
+}
+.write-button{
+    width: 100%; 
+    margin-bottom: 10px;
+    text-align: right; 
+}
+.item-img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }

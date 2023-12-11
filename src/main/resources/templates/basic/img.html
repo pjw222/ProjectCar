@@ -1,11 +1,11 @@
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
 <head th:fragment="imgFragmentHead">
-    <link rel="stylesheet" href="/styles/img.css" />
+    <link rel="stylesheet" th:href="@{/styles/img.css}" />
 </head>
 <body>
     <div th:fragment="imgFragment" id="img">
         <div class="container">
-            <img src="imgs/acac.jpg" alt="브랜드 카 이미지">
+            <img th:src="@{/imgs/acac.jpg}" alt="브랜드 카 이미지">
             <div class="text-overlay">
                 자동차 지금 당장 구매하세요
             </div>

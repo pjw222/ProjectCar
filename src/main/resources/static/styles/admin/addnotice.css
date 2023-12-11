@@ -1,0 +1,50 @@
+.item-box {
+    flex: 1;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    user-select: none;
+}
+.notice-container {
+    width: 500px;
+    height: 500px;
+    border: solid 2px black;
+    margin: auto;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.submint-button {
+    width: 100%; 
+    margin-top: 10px;
+    text-align: right; 
+}
+
+.submint-button button {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.input-title{
+    width: 300px;
+    margin: auto;
+}
+.input-title input{
+    width: 300px;
+    height: auto;
+    margin: auto;
+}
+.input-content{
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    margin-top: 10px;
+}
+.input-content textarea{
+    resize: none;
+    width: 400px;
+    height: 400px;
+    text-align: left;
+}
