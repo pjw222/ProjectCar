@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="reservationFragmentHead"> 
+        <link rel="stylesheet" th:href="@{/styles/product/reservation.css}" />
+    </head>
+
+    <body>
+        <div class="container" th:fragment="reservationFragment">
+            <div class="item-box">
+                <img class="item-img" th:src="@{/imgs/carsell.png}" />
+            </div>
+            <div class="reservation-box">
+                <span class="reservation-title">판매 차량 이름</span>
+                <div class="reservation-imgbox">
+                    <img class="reservation-img" th:src="@{/imgs/brandcar.jpg}"/>
+                </div>
+                <div class="reservation-name">예약자 이름 :</div>
+                <div class="reservation-price">
+                    가격 :10000원
+                </div>
+                <div class="reservation-content">
+                    차량 설명
+                </div>
+                <div class="reservation-address">주소 </div>
+                <button class="reservation-check" >
+                    결제 버튼
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

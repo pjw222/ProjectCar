@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
     <head th:fragment="buyFragmentHead"> 
         <link rel="stylesheet" th:href="@{/styles/product/buy.css}" />
+        <link rel="stylesheet" th:href="@{/styles/main/main.css}" />
     </head>
 
     <body>
@@ -10,7 +11,23 @@
                 <img class="item-img" th:src="@{/imgs/carsell.png}" />
             </div>
             <div class="sell-box">
-                <h1 class="sell-title">판매 차량 이름</h1>
+                <span class="sell-title">판매 차량 이름</span>
+                <div class="sell-imgbox">
+                    <img class="sell-img" th:src="@{/imgs/brandcar.jpg}"/>
+                </div>
+                <div class="sell-price">
+                    가격 :10000원
+                </div>
+                <div class="sell-content-title">
+                    차량 설명
+                </div>
+                <div class="sell-content">차량 설명 내용 </div>
+                <button class="sell-check" th:onclick="'location.href=\'/product/reservation\''">
+                    예약 버튼
+                </button>
+            </div>
+            <div class="bestProduct">
+            <div th:replace="/main/bestproduct :: bestProductFragment"></div>
             </div>
         </div>
     </body>

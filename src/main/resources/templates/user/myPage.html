@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="myPageFragmentHead">
+        <link rel="stylesheet" th:href="@{/styles/user/mypage.css}" />
+    </head>
+
+    <body>
+        <div class="container" th:fragment="myPageFragment">
+            <div class="item-box">
+                <img class="item-img" th:src="@{/imgs/mypage.png}" />
+            </div>
+            <div class="mypage-box">
+                <div class="mypage-name">안녕하세요 반갑습니다 누구누구님</div>
+                <div class="mypage-content">
+                    <div class="mypage-gender">성별 표시</div>
+                    <div class="mapge-phone">핸드폰 번호</div>
+                    <div class="mypage-address">주소</div>
+                </div>
+                <div class="mypage-reservation">
+                    <li class="mypage-reservationBox">
+                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
+                        <div class="mypage-reservation-name">예약차량 이름</div>
+                    </li>
+                    <li class="mypage-reservationBox">
+                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
+                        <div class="mypage-reservation-name">예약차량 이름</div>
+                    </li>
+                    <li class="mypage-reservationBox">
+                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
+                        <div class="mypage-reservation-name">예약차량 이름</div>
+                    </li>
+                    <li class="mypage-reservationBox">
+                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
+                        <div class="mypage-reservation-name">예약차량 이름</div>
+                    </li>
+                    <li class="mypage-reservationBox">
+                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
+                        <div class="mypage-reservation-name">예약차량 이름</div>
+                    </li>
+                </div>
+                <button class="mypage-withdraw">회원 탈퇴</button>
+            </div>
+        </div>
+    </body>
+</html>

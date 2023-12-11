@@ -19,4 +19,13 @@ public class UserController {
 		
 		return "basic/layout";
 	}
+	@GetMapping("/mypage")
+	public String getMyPage(Model model) {
+		model.addAttribute("title", "마이페이지");
+		model.addAttribute("path", "/user/myPage");
+		model.addAttribute("content", "myPageFragment");
+		model.addAttribute("contentHead", "myPageFragmentHead");
+		
+		return "basic/layout";
+	}
 }

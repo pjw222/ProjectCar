@@ -159,6 +159,16 @@ public class ProductController {
 		
 		return "basic/layout";
 	}
+	@GetMapping("/reservation")
+	public String getReservationPage(Model model) {
+		
+		model.addAttribute("title", "예약페이지");
+		model.addAttribute("path", "/product/sell/reservation");
+		model.addAttribute("content", "reservationFragment");
+		model.addAttribute("contentHead", "reservationFragmentHead");
+		
+		return "basic/layout";
+	}
 	
 	
 	
