@@ -10,11 +10,12 @@
                 <img class="item-img" th:src="@{/imgs/mypage.png}" />
             </div>
             <div class="mypage-box">
-                <div class="mypage-name">안녕하세요 반갑습니다 누구누구님</div>
+                <div class="mypage-name" th:text="'반갑습니다 ' + ${session.userName} + ' 님'"></div>
                 <div class="mypage-content">
-                    <div class="mypage-gender">성별 표시</div>
-                    <div class="mapge-phone">핸드폰 번호</div>
-                    <div class="mypage-address">주소</div>
+                    <div class="mypage-gender" th:text="${session.userGender}">성별 표시</div>
+
+                    <div class="mapge-phone" th:text="${session.userPhone}">핸드폰 번호</div>
+                    <div class="mypage-address" th:text="${session.userAddress}">주소</div>
                 </div>
                 <div class="mypage-reservation">
                     <li class="mypage-reservationBox">
@@ -38,7 +39,9 @@
                         <div class="mypage-reservation-name">예약차량 이름</div>
                     </li>
                 </div>
-                <button class="mypage-withdraw">회원 탈퇴</button>
+                <form th:action="@{/mypage/delete}" method="post">
+                    <button class="mypage-withdraw">회원 탈퇴</button>
+                </form>
             </div>
         </div>
     </body>
