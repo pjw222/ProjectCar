@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.kyungil.webcar.notice.domain.Notice;
-import com.kyungiljava4.board.board.domain.Board;
 
 @Repository
 public class NoticeDAO {

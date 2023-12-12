@@ -4,7 +4,7 @@
     <body>
         <div th:fragment="noticeHeadFragment" class="item">
             <div class="item-box">
-                <img src="imgs/animg.png" />
+                <img th:src="@{/imgs/animg.png}" />
             </div>
             <ul class="selectPage">
                 <li th:class="${pageType == 'intro' ? 'th-intro' : ''}" th:onclick="'location.href=\'/intro\''">사이트소개</li>

@@ -5,3 +5,7 @@ body{
 #contentImg {
     margin-top: 148px;
 }
+a {
+    color: inherit; /* 링크의 색상을 부모 요소의 색상으로 상속받음 */
+    text-decoration: none; /* 밑줄 제거 */
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+    <head th:fragment="viewFragmentHead">
+        <link rel="stylesheet" th:href="@{/styles/notice/view.css}" />
+        <link rel="stylesheet" th:href="@{/styles/notice/noticehead.css}" />
+    </head>
+
+    <body>
+        <div class="container" th:fragment="viewFragment">
+            <div th:replace="/notice/noticehead :: noticeHeadFragment"></div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div th:text="'제목 : '+${notices.title}"></div>
+                <div th:text="'작성자 : '+${notices.userName}"></div>
+                <div th:text="*{notices.createdAt}"></div>
+              </div>
+              <hr />
+              <p th:utext="${notices.content}"></p> 
+        </div>
+    </body>
+</html>

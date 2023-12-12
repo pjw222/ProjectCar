@@ -20,8 +20,12 @@
                     </thead>
                     <tbody>
                         <tr th:each="notice : ${notices}" th:object="${notice}">
-                            <td scope="row" th:text="*{id}">1</td>
-                            <td th:text="*{title}">테이블 제목 1</td>
+                            <td>
+                                <a th:href="@{'/notice/view/' + *{id}}" th:text="*{id}"></a>
+                            </td> 
+                            <td>
+                                <a th:href="@{'/notice/view/' + *{id}}" th:text="*{title}"></a>
+                            </td> 
                             <td th:text="*{userName}">작성자1</td>
                             <td th:text="*{createdAt}">2023-12-09 12:00</td>
                         </tr>
@@ -43,7 +47,7 @@
                                 <a class="page-link" th:href="@{'?page=' + *{pageNumber}}" th:text="${pageNumber}">1</a>
                             </li>
                             <li class="page-item" th:if="*{currentPage < totalPages}">
-                                <a class="page-link" th:href="@{'/notice?page=' + *{currentPage + 1}}" aria-label="Next">
+                                <a class="page-link" th:href="@{'/?page=' + *{currentPage + 1}}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>

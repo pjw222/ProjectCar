@@ -9,7 +9,7 @@
 <body>
     <div th:fragment="loginFragment">
         <div th:if="${session.userName != null}" class="d-flex align-items-center mb-0">
-          <a th:href="@{/mypage}"><span class="border border-primary" th:text="${session.userName}"></span></a>
+          <a th:href="@{/mypage}"><span class="border border-primary me-3" th:text="${session.userName}"></span></a>
             <form action="/logout" method="post">
                 <button type="submit" class="btn btn-secondary btn-sm">로그아웃</button>
             </form>

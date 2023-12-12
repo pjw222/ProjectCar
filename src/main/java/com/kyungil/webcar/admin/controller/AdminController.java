@@ -76,7 +76,6 @@ public class AdminController {
 			User.Role userRole = User.Role.valueOf(userRoleString);
 
 			if (User.Role.ADMIN.equals(userRole)) {
-				// Assuming adminService.delete method takes userId as an argument
 				adminService.delete(userId);
 				return "redirect:/admin/user/list";
 			}

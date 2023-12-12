@@ -2,7 +2,6 @@ package com.kyungil.webcar.admin.domain;
 
 import java.sql.Timestamp;
 
-import com.kyungil.webcar.user.domain.User;
 import com.kyungil.webcar.user.domain.User.Role;
 
 import lombok.AllArgsConstructor;

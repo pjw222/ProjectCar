@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kyungil.webcar.notice.domain.Notice;
 import com.kyungil.webcar.notice.service.NoticeService;
-
 
 import jakarta.servlet.http.HttpSession;
 
@@ -23,8 +23,8 @@ public class NoticeController {
 
 	@GetMapping("/notice")
 	public String getNotice(Model model, @RequestParam(defaultValue = "1", name = "page") int page,
-	        @RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
-		
+			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
+
 		List<Notice> pagedNotices = noticeService.getNoticesByPage(page, pageSize);
 
 		int totalBoards = noticeService.getPageCount();
@@ -39,9 +39,10 @@ public class NoticeController {
 		model.addAttribute("pageType", "notice");
 		return "basic/layout";
 	}
+
 	@GetMapping("/admin/notice")
 	public String getAdminPage(Model model, @RequestParam(defaultValue = "1", name = "page") int page,
-	        @RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
+			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
 		List<Notice> pagedNotices = noticeService.getNoticesByPage(page, pageSize);
 
 		int totalBoards = noticeService.getPageCount();
@@ -55,6 +56,7 @@ public class NoticeController {
 		model.addAttribute("contentHead", "noticeFragmentHead");
 		return "admin/adminlayout";
 	}
+
 	@PostMapping("/admin/notice/add")
 	public String boardAdd(@RequestParam Map<String, String> data, HttpSession session) {
 		try {
@@ -68,4 +70,19 @@ public class NoticeController {
 			return "redirect:/";
 		}
 	}
+
+	@GetMapping("/notice/view/{noticeId}")
+	public String showBoardDetail(@PathVariable("noticeId") int noticeId, Model model) {
+		Notice notice = noticeService.get(noticeId);
+
+		model.addAttribute("notices", notice);
+		model.addAttribute("title", "공지사항상세보기");
+		model.addAttribute("path", "/notice/view");
+		notice.setContent(notice.getContent().replace("\n", "<br />"));
+		model.addAttribute("content", "viewFragment");
+		model.addAttribute("contentHead", "viewFragmentHead");
+		model.addAttribute("pageType", "notice");
+		return "basic/layout";
+	}
+
 }
