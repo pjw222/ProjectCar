@@ -62,6 +62,7 @@ public class UserController {
 			session.setAttribute("userGender", tempUser.getGenderAsString());
 			session.setAttribute("userAddress", tempUser.getAddress());
 			session.setAttribute("userPhone", tempUser.getPhone());
+			session.setAttribute("userRole", tempUser.getRole().name());
 		}
 		return "redirect:/";
 	}

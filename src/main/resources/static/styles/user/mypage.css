@@ -93,12 +93,12 @@
 .mypage-withdraw{
     grid-column: 6/8;
     grid-row: 11/13;
+}
+.mypage-withdraw button{
+    width: 100%;
+    height: 100%;
     border: solid 2px black;
     text-align: center;
     font-size: large;
     font-weight: 600;
 }
-/* .mypage-reservation-name{
-    grid-column: 1/2;
-    grid-row: 2/3;
-} */

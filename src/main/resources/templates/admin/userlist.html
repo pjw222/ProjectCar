@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
     <head th:fragment="userlistFragmentHead">
         <link rel="stylesheet" th:href="@{/styles/admin/userlist.css}" />
@@ -8,61 +9,64 @@
     <body>
         <div th:fragment="userlistFragment" id="adminPage">
             <div th:replace="/admin/adminimg :: adminimgFragment"></div>
-            <div class="userlist-container">
-                
-                <ul class="userlist-box">
-                    <form th:action="@{user/addadmin}" method="post">
-                    <a th:href="@{/admin/user/detail}"><li>
-                        <div class="user-id">회원 아이디</div>
-                        <div class="user-name">회원 이름</div>
-                        <div class="user-time">회원 생성 일자</div>
-                        <div>
-                            <input type="checkbox"  />
-                        </div>
-                        <form th:action="@{user/delete}">
-                            <div class="delete-user"><button>강퇴</button></div>
-                        </form>
-                    </li></a>
-                    <a th:href="@{/admin/user/detail}"><li>
-                        <div class="user-id">회원 아이디</div>
-                        <div class="user-name">회원 이름</div>
-                        <div class="user-time">회원 생성 일자</div>
-                        <div>
-                            <input type="checkbox"  />
-                        </div>
-                        <form th:action="@{user/delete}">
-                            <div class="delete-user"><button>강퇴</button></div>
-                        </form>
-                    </li></a>
-                    <a th:href="@{/admin/user/detail}"><li>
-                        <div class="user-id">회원 아이디</div>
-                        <div class="user-name">회원 이름</div>
-                        <div class="user-time">회원 생성 일자</div>
-                        <div>
-                            <input type="checkbox"  />
-                        </div>
-                        <form th:action="@{user/delete}">
-                            <div class="delete-user"><button>강퇴</button></div>
-                        </form>
-                    </li></a>
-                    <a th:href="@{/admin/user/detail}"><li>
-                        <div class="user-id">회원 아이디</div>
-                        <div class="user-name">회원 이름</div>
-                        <div class="user-time">회원 생성 일자</div>
-                        <div>
-                            <input type="checkbox"  />
-                        </div>
-                        <form th:action="@{user/delete}">
-                            <div class="delete-user"><button>강퇴</button></div>
-                        </form>
-                    </li></a>   
-                </ul>
-                <div class="admin-box">
-                    <button>관리자 임명</button>
-                </div>
-            </form>
-            </div>
+                <form class="userlist-container" th:action="@{/admin/user/addadmin}" method="post">
+                    <ul class="userlist-box">
+                        <th:block th:each="user : ${users}">
+                            <li>
+                                <div class="user-id" th:text="${user.userId}">회원 아이디</div>
+                                <div class="user-name" th:text="${user.name}">회원 이름</div>
+
+                                <div>
+                                    <input type="checkbox" name="selectedUsers" th:value="${user.id}" />
+                                </div>
+                                <div
+                                    class="user-detail-link"
+                                    th:attr="data-user-id=${user.id}"
+                                    onclick="redirectToDetailPage(this)"
+                                >
+                                    상세 보기
+                                </div>
+                            </li>
+                        </th:block>
+                    </ul>
+                    <div class="pagination">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item" th:if="${currentPage > 1}">
+                                    <a class="page-link" th:href="@{'/admin/user/list?page=' + *{currentPage - 1}}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li
+                                    class="page-item"
+                                    th:each="pageNumber : *{#numbers.sequence(1, totalPages)}"
+                                    th:classappend="${pageNumber == currentPage} ? 'active' : ''"
+                                >
+                                    <a class="page-link" th:href="@{'?page=' + *{pageNumber}}" th:text="${pageNumber}">1</a>
+                                </li>
+                                <li class="page-item" th:if="*{currentPage < totalPages}">
+                                    <a class="page-link" th:href="@{'/admin/user/list?page=' + *{currentPage + 1}}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="admin-box">
+                        <button type="submit">관리자 임명</button>
+                    </div>
+                </form>
             <hr />
+            <script>
+                function redirectToDetailPage(element) {
+                    // 선택한 유저의 아이디 가져오기
+                    var userId = element.getAttribute('data-user-id');
+
+                    // 디테일 페이지로 리다이렉션
+                    window.location.href = '/admin/user/detail/' + userId;
+                }
+            </script>
         </div>
     </body>
 </html>

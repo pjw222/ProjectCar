@@ -19,129 +19,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>테이블 제목 1</td>
-                            <td>작성자1</td>
-                            <td>2023-12-09 12:00</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>테이블 제목 2</td>
-                            <td>작성자2</td>
-                            <td>2023-12-09 13:30</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>테이블 제목 3</td>
-                            <td>작성자3</td>
-                            <td>2023-12-09 15:45</td>
+                        <tr th:each="notice : ${notices}" th:object="${notice}">
+                            <td scope="row" th:text="*{id}">1</td>
+                            <td th:text="*{title}">테이블 제목 1</td>
+                            <td th:text="*{userName}">작성자1</td>
+                            <td th:text="*{createdAt}">2023-12-09 12:00</td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="pagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item" th:if="${currentPage > 1}">
+                                <a class="page-link" th:href="@{'/admin/notice?page=' + *{currentPage - 1}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li
+                                class="page-item"
+                                th:each="pageNumber : *{#numbers.sequence(1, totalPages)}"
+                                th:classappend="${pageNumber == currentPage} ? 'active' : ''"
+                            >
+                                <a class="page-link" th:href="@{'?page=' + *{pageNumber}}" th:text="${pageNumber}">1</a>
+                            </li>
+                            <li class="page-item" th:if="*{currentPage < totalPages}">
+                                <a class="page-link" th:href="@{'/admin/notice?page=' + *{currentPage + 1}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                  
             </div>
             <hr />
             <div class="write-button">

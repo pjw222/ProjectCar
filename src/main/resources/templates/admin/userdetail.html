@@ -10,12 +10,14 @@
             <div th:replace="/admin/adminimg :: adminimgFragment"></div>
             <div class="userdetail-container">
                 <div class="userdetail-box">
-                    <div class="userdetail-name">회원 누구누구님</div>
+                    <div class="userdetail-name" th:text="이름+':'+${user.name}">회원 누구누구님</div>
                     <div class="userdetail-content">
-                        <div class="userdetail-gender">성별 표시</div>
-                        <div class="userdetail-phone">핸드폰 번호</div>
-                        <div class="userdetail-address">주소</div>
+                        <div class="userdetail-gender" th:text="성별+':'+${user.getGenderAsString()}">성별 표시</div>
+                        <div class="userdetail-phone" th:text="핸드폰+' '+번호+':'+${user.phone}">핸드폰 번호</div>
+                        <div class="userdetail-address" th:text="주소+':'+${user.address}">주소</div>
+                        <div class="userdetail-time" th:text="생성+' '+일자 + ':' +${#dates.format(user.created_at, 'yyyy-MM-dd HH:mm')}">회원 생성 일자</div>
                     </div>
+
                     <div class="userdetail-reservation">
                         <li class="userdetail-reservationBox">
                             <img class="userdetail-img" th:src="@{/imgs/brandcar.jpg}" />
@@ -38,7 +40,11 @@
                             <div class="userdetail-reservation-name">예약차량 이름</div>
                         </li>
                     </div>
-
+                    
+                    <form class="admin-box" th:action="@{'/admin/user/delete/'}+${user.id}" method="post">
+                            <button type="submit">강퇴</button>
+                    </form>
+                    
             </div>
             <hr />
         </div>

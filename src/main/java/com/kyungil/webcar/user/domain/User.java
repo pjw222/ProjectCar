@@ -13,6 +13,9 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class User {
+	   public enum Role {
+	        USER, ADMIN
+	    }
     private int id;
 
     @NonNull
@@ -38,5 +41,8 @@ public class User {
     
     public String getGenderAsString() {
         return (gender == 1) ? "남성" : "여성";
+    }
+    public Role getRole() {
+        return (admin == 1) ? Role.ADMIN : Role.USER;
     }
 }

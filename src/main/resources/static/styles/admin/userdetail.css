@@ -94,3 +94,8 @@
     font-size: large;
     font-weight: 400;
 }
+.admin-box{
+    margin: auto;
+    grid-column: 8/9;
+    grid-row: 8/9;
+}

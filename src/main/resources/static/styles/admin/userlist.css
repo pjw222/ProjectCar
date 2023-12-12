@@ -28,3 +28,7 @@
     grid-column: 8/9;
     grid-row: 8/9;
 }
+.pagination{
+    grid-column: 3/7;
+    grid-row: 8/9;
+}
