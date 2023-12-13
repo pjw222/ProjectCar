@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.kyungil.webcar.product.dao.CarDAO;
 import com.kyungil.webcar.product.domain.Car;
 
@@ -36,5 +37,9 @@ public class CarService {
     public List<Car> getCarTypeListByPage(int carTypeId, int page, int pageSize) {
         int offset = (page - 1) * pageSize;
         return carDAO.getCarTypeListByPage(carTypeId,offset, pageSize);
+    }
+    public Car get(int id) {
+    	Car car = carDAO.get(id);
+		return car;
     }
 }

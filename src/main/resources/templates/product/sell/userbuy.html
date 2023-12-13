@@ -6,26 +6,31 @@
     </head>
 
     <body>
-        <div class="container" th:fragment="buyFragment">
+        <div class="container" th:fragment="buyFragment" th:each="car : ${carList}" th:object="${car}">
             <div class="item-box">
                 <img class="item-img" th:src="@{/imgs/carsell.png}" />
             </div>
             <div class="sell-box">
-                <span class="sell-title">판매 차량 이름</span>
+                <span class="sell-title" th:text="${car.name}">판매 차량 이름</span>
                 <div class="sell-imgbox">
-                    <img class="sell-img" th:src="@{/imgs/brandcar.jpg}"/>
+                    <img class="sell-img" th:src="${car.url}"/>
                 </div>
-                <div class="sell-price">
+                <div class="sell-price" th:text="${car.price}+'만원'">
                     가격 :10000원
                 </div>
                 <div class="sell-content-title">
                     차량 설명
                 </div>
-                <div class="sell-content">차량 설명 내용 </div>
+                <div class="sell-content" th:text="${car.content}">차량 설명 내용 </div>
                 <button class="sell-check" th:onclick="'location.href=\'/product/reservation\''">
                     예약 버튼
                 </button>
             </div>
+            <button class="like-button" th:onclick="'location.href=\'/product/like?carId=\' + ${car.id}'">
+                <span th:if="${isLiked}">좋아요 취소</span>
+                <span th:unless="${isLiked}">좋아요</span>
+            </button>
+            
             <div class="bestProduct">
             <div th:replace="/main/bestproduct :: bestProductFragment"></div>
             </div>

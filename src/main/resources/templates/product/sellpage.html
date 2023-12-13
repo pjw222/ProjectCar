@@ -6,11 +6,13 @@
         <div th:fragment="sellpageFragment">
             <ul class="sell">
                 <li class="sell-box" th:each="car : ${carlist}">
-                    <img class="sell-img" th:src="${car.url}" alt="Car Image"/>
-                    <div>
-                    <span th:text="'이름 :'+${car.name}"></span>
-                </div>
-                    <span th:text="'가격 :'+${car.price}+'만원'"></span>
+                    <a th:href="@{'/product/buy/' + ${car.id}}">
+                        <img class="sell-img" th:src="${car.url}" alt="Car Image" />
+                        <div>
+                            <span th:text="'이름 :'+${car.name}"></span>
+                        </div>
+                        <span th:text="'가격 :'+${car.price}+'만원'"></span>
+                    </a>
                 </li>
             </ul>
         </div>

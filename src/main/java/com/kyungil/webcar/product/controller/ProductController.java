@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.kyungil.webcar.likes.service.LikesService;
+import com.kyungil.webcar.notice.domain.Notice;
 import com.kyungil.webcar.product.domain.Car;
 import com.kyungil.webcar.product.service.CarService;
 
@@ -19,6 +21,9 @@ import com.kyungil.webcar.product.service.CarService;
 public class ProductController {
 	@Autowired
 	private CarService carService;
+	@Autowired
+	private LikesService likesService;
+	
 	@GetMapping("/brand/hyundai")
 	public String getBrandHyundaiPage(Model model, @RequestParam(defaultValue = "1", name = "page") int page,
 			@RequestParam(defaultValue = "8", name = "pageSize") int pageSize) {
@@ -256,15 +261,34 @@ public class ProductController {
 		
 		return "basic/layout";
 	}
-	@GetMapping("/buy")
-	public String getBuyPage(Model model) {
-		
-		model.addAttribute("title", "구매페이지");
-		model.addAttribute("path", "/product/sell/userbuy");
-		model.addAttribute("content", "buyFragment");
-		model.addAttribute("contentHead", "buyFragmentHead");
-		
-		return "basic/layout";
+//	@GetMapping("/buy/{buyId}")
+//	public String getBuyPage(@PathVariable("buyId") int buyId, Model model) {
+//		
+//		Car car = carService.get(buyId);
+//		model.addAttribute("carList", car);
+//		model.addAttribute("title", "구매페이지");
+//		model.addAttribute("path", "/product/sell/userbuy");
+//		model.addAttribute("content", "buyFragment");
+//		model.addAttribute("contentHead", "buyFragmentHead");
+//		
+//		return "basic/layout";
+//	}
+	@GetMapping("/buy/{buyId}")
+	public String getBuyPage(@PathVariable("buyId") int buyId, Model model) {
+	   
+	    int userId = 1;
+
+	    Car car = carService.get(buyId);
+	    boolean isLiked = likesService.isLiked(userId, car.getId());
+
+	    model.addAttribute("carList", car);
+	    model.addAttribute("isLiked", isLiked);
+	    model.addAttribute("title", "구매페이지");
+	    model.addAttribute("path", "/product/sell/userbuy");
+	    model.addAttribute("content", "buyFragment");
+	    model.addAttribute("contentHead", "buyFragmentHead");
+
+	    return "basic/layout";
 	}
 	@GetMapping("/reservation")
 	public String getReservationPage(Model model) {
@@ -276,7 +300,21 @@ public class ProductController {
 		
 		return "basic/layout";
 	}
-	
+//	@GetMapping("/like")
+//	public String likeCar(@RequestParam Long carId, Model model) {
+//	    // 데모용으로 userId를 하드코딩했습니다. 실제 애플리케이션에서는 세션이나 인증 컨텍스트에서 userId를 가져와야 합니다.
+//	    Long userId = 1L;
+//
+//	    boolean isLiked = likesService.isLiked(userId, carId);
+//	    likesService.toggleLike(userId, carId);
+//
+//	    // 차량 목록을 다시 불러옵니다 (실제로는 차량 목록을 가져오는 실제 메서드로 대체해야 합니다).
+//	    List<Car> carList = carService.getAllCars();
+//	    model.addAttribute("carList", carList);
+//	    model.addAttribute("isLiked", isLiked);
+//
+//	    return "redirect:/product/buy/{carId}";
+//	}
 	
 	
 }

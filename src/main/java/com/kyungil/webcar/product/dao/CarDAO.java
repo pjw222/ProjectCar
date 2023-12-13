@@ -61,5 +61,9 @@ public class CarDAO {
 	public int getTypeCount(int carTyepId) {
 		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM car where cartype_id = ?", Integer.class,carTyepId);
 	}
-
+	public Car get(int id) {
+		return jdbcTemplate.queryForObject(
+				"select a.*, b.url from car a join img b on a.img_id = b.id where a.id = ?",
+				mapper, id);
+	}
 }
