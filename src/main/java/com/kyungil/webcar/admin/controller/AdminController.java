@@ -1,7 +1,7 @@
 package com.kyungil.webcar.admin.controller;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kyungil.webcar.admin.domain.User;
 import com.kyungil.webcar.admin.service.AdminService;
-import com.kyungil.webcar.notice.domain.Notice;
+import com.kyungil.webcar.img.service.ImgService;
+import com.kyungil.webcar.product.domain.Car;
+import com.kyungil.webcar.product.service.CarService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -23,6 +26,10 @@ import jakarta.servlet.http.HttpSession;
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private CarService carService;
+	@Autowired
+	private ImgService imgService;
 
 	@GetMapping("/notice/add")
 	public String getNoticeAddPage(Model model) {
@@ -41,6 +48,24 @@ public class AdminController {
 		model.addAttribute("contentHead", "addproductFragmentHead");
 		return "admin/adminlayout";
 	}
+    @PostMapping("/product/add")
+    public String addCar(@RequestParam("image") MultipartFile imageFile, @RequestParam Map<String, String> data) {
+
+        int imgId = imgService.addImgAndGetId(imageFile);
+        int brand = Integer.parseInt(data.get("brand"));
+        int carType = Integer.parseInt(data.get("carType"));
+        int price = Integer.parseInt(data.get("price"));
+
+        carService.addCar(new Car(data.get("title"),
+                data.get("content"),
+                price,
+                imgId,
+                brand,
+                carType));
+
+        return "redirect:/admin/notice";
+    }
+
 
 	@GetMapping("/product/list")
 	public String getProductListPage(Model model) {
@@ -53,7 +78,7 @@ public class AdminController {
 
 	@GetMapping("/user/list")
 	public String getUserListPage(Model model, @RequestParam(defaultValue = "1", name = "page") int page,
-	        @RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
+			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
 		List<User> pageUsers = adminService.getUsersByPage(page, pageSize);
 
 		int totalBoards = adminService.getPageCount();
@@ -78,8 +103,7 @@ public class AdminController {
 			if (User.Role.ADMIN.equals(userRole)) {
 				adminService.delete(userId);
 				return "redirect:/admin/user/list";
-			}
-			else {
+			} else {
 				System.out.println("권한없음");
 			}
 		}
@@ -96,8 +120,7 @@ public class AdminController {
 			if (User.Role.ADMIN.equals(userRole)) {
 				adminService.addAdmin(selectedUsers);
 				return "redirect:/admin/user/list";
-			}
-			else {
+			} else {
 				System.out.println("권한없음");
 			}
 		}
@@ -106,14 +129,20 @@ public class AdminController {
 	}
 
 	@GetMapping("/user/detail/{userId}")
-	public String getUserDetailPage(@PathVariable(name = "userId") int userId, Model model) {
-		User user = adminService.get(userId);
-		model.addAttribute("user", user);
-		model.addAttribute("title", "회원상세보기페이지");
-		model.addAttribute("path", "/admin/userdetail");
-		model.addAttribute("content", "userdetailFragment");
-		model.addAttribute("contentHead", "userdetailFragmentHead");
-		return "admin/adminlayout";
+	public String getUserDetailPage(@PathVariable(name = "userId") int userId, Model model, HttpSession session) {
+		String userRoleString = (String) session.getAttribute("userRole");
+		if (userRoleString != null) {
+			User.Role userRole = User.Role.valueOf(userRoleString);
+			if (User.Role.ADMIN.equals(userRole)) {
+				User user = adminService.get(userId);
+				model.addAttribute("user", user);
+				model.addAttribute("title", "회원상세보기페이지");
+				model.addAttribute("path", "/admin/userdetail");
+				model.addAttribute("content", "userdetailFragment");
+				model.addAttribute("contentHead", "userdetailFragmentHead");
+				return "admin/adminlayout";
+			}
+		}
+		return "redirect:/";
 	}
-
 }

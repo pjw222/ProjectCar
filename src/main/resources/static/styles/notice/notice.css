@@ -1,7 +1,6 @@
 .container {
     width: 1000px;
     height: 1000px;
-    margin-top: 148px;
 }
 .table-container {
     max-height: 500px; /* 전체 테이블의 최대 높이를 500px로 설정 */

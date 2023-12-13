@@ -8,18 +8,57 @@
     <body>
         <div th:fragment="addproductFragment" id="adminPage">
             <div th:replace="/admin/adminimg :: adminimgFragment"></div>
-            <div class="addproduct-container">
-                <form th:action="@{/admin/product/add}" method="post">
-                    <div class="input-title">
-                        <input type="text" placeholder="제목" name="title" />
+            <div>
+                <form th:action="@{/admin/product/add}" method="post" id="addBoard" class="addproduct-container" enctype="multipart/form-data">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="title" id="floatingInput" placeholder="제목" />
+                        <label for="floatingInput">제목</label>
                     </div>
-                    <div class="input-content">
-                        <textarea placeholder="내용" name="content"></textarea>
+                    <div class="form-floating mb-3">
+        
+                        <input type="file" class="form-control" name="image" id="image" accept="image/*" />
+                        <label for="floatingInput">이미지업로드</label>
                     </div>
-                    <div class="submint-button">
-                        <button class="add-img">이미지추가</button>
-                        <button>글작성하기</button>
+                    <div class="form-floating mb-3">
+                        <textarea
+                            class="form-control"
+                            name="content"
+                            placeholder="내용"
+                            id="floatingTextarea"
+                        ></textarea>
                     </div>
+                    <div class="form-floating mb-3">
+                    <input type="number" class="form-control" name="price" id="floatingInput" placeholder="가격" />
+                    <label for="floatingInput">가격</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="carType">차 종류</label>
+                        <select
+                            class="form-select"
+                            id="carType"
+                            name="carType"
+                            style="margin: auto; text-align: center"
+                        >
+                            <option value="1">소형차</option>
+                            <option value="2">중형차</option>
+                            <option value="3">대형차</option>
+                            <option value="4">스포츠카</option>
+                        </select>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="brand">브랜드</label>
+                        <select class="form-select" id="brand" name="brand" style="margin: auto; text-align: center">
+                            <option value="1">현대</option>
+                            <option value="2">기아</option>
+                            <option value="3">르노삼성</option>
+                            <option value="4">쉐보레</option>
+                            <option value="5">쌍용</option>
+                            <option value="6">포르쉐</option>
+                            <option value="7">BMW</option>
+                            <option value="8">람보르기니</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">작성</button>
                 </form>
             </div>
             <hr />

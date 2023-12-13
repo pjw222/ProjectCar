@@ -5,29 +5,12 @@
     <body>
         <div th:fragment="sellpageFragment">
             <ul class="sell">
-                <li class="sell-box" th:onclick="'location.href=\'/product/buy\''"><img class="sell-img" th:src="@{/imgs/brandcar.jpg}">
-                    <div class="sell-title">차</div>
-                </li></a>
-                <li class="sell-box" style="box-sizing: border-box; list-style: none;"><img class="sell-img" th:src="@{/imgs/brandcar.jpg}">
-                    <div class="sell-title">차</div>
-                </li>
-                <li class="sell-box" style="box-sizing: border-box; list-style: none;"><img class="sell-img" th:src="@{/imgs/brandcar.jpg}">
-                    <div class="sell-title">차</div>
-                </li>
-                <li class="sell-box" style="box-sizing: border-box; list-style: none;"><img class="sell-img" th:src="@{/imgs/brandcar.jpg}">
-                    <div class="sell-title">차</div>
-                </li>
-                <li class="sell-box" style="box-sizing: border-box; list-style: none;"><img class="sell-img" th:src="@{/imgs/brandcar.jpg}">
-                    <div class="sell-title">차</div>
-                </li>
-                <li class="sell-box" style="box-sizing: border-box; list-style: none;"><img class="sell-img" th:src="@{/imgs/brandcar.jpg}">
-                    <div class="sell-title">차</div>
-                </li>
-                <li class="sell-box" style="box-sizing: border-box; list-style: none;"><img class="sell-img" th:src="@{/imgs/brandcar.jpg}">
-                    <div class="sell-title">차</div>
-                </li>
-                <li class="sell-box" style="box-sizing: border-box; list-style: none;"><img class="sell-img" th:src="@{/imgs/brandcar.jpg}">
-                    <div class="sell-title">차</div>
+                <li class="sell-box" th:each="car : ${carlist}">
+                    <img class="sell-img" th:src="${car.url}" alt="Car Image"/>
+                    <div>
+                    <span th:text="'이름 :'+${car.name}"></span>
+                </div>
+                    <span th:text="'가격 :'+${car.price}+'만원'"></span>
                 </li>
             </ul>
         </div>

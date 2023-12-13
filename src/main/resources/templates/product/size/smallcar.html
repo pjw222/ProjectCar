@@ -8,6 +8,29 @@
         <body>
             <div class="container" th:fragment="smallcarFragment">
                 <div th:replace="/product/size/size :: sizeFragment"></div>
+                <div class="pagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item" th:if="${currentPage > 1}">
+                                <a class="page-link" th:href="@{'/product/smallcar?page=' + *{currentPage - 1}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li
+                                class="page-item"
+                                th:each="pageNumber : *{#numbers.sequence(1, totalPages)}"
+                                th:classappend="${pageNumber == currentPage} ? 'active' : ''"
+                            >
+                                <a class="page-link" th:href="@{'?page=' + *{pageNumber}}" th:text="${pageNumber}">1</a>
+                            </li>
+                            <li class="page-item" th:if="*{currentPage < totalPages}">
+                                <a class="page-link" th:href="@{'/product/smallcar?page=' + *{currentPage + 1}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </body>
     </html>
