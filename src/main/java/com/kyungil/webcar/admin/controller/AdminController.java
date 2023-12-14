@@ -18,6 +18,8 @@ import com.kyungil.webcar.admin.service.AdminService;
 import com.kyungil.webcar.img.service.ImgService;
 import com.kyungil.webcar.product.domain.Car;
 import com.kyungil.webcar.product.service.CarService;
+import com.kyungil.webcar.reservation.domain.Reservation;
+import com.kyungil.webcar.reservation.service.ReservationService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -30,50 +32,104 @@ public class AdminController {
 	private CarService carService;
 	@Autowired
 	private ImgService imgService;
+	@Autowired
+	private ReservationService reservationService;
 
 	@GetMapping("/notice/add")
-	public String getNoticeAddPage(Model model) {
-		model.addAttribute("title", "공지사항작성페이지");
-		model.addAttribute("path", "/admin/addnotice");
-		model.addAttribute("content", "addnoticeFragment");
-		model.addAttribute("contentHead", "addnoticeFragmentHead");
-		return "admin/adminlayout";
+	public String getNoticeAddPage(Model model, HttpSession session) {
+		String userRoleString = (String) session.getAttribute("userRole");
+
+		if (userRoleString != null) {
+			User.Role userRole = User.Role.valueOf(userRoleString);
+
+			if (User.Role.ADMIN.equals(userRole)) {
+				model.addAttribute("title", "공지사항작성페이지");
+				model.addAttribute("path", "/admin/addnotice");
+				model.addAttribute("content", "addnoticeFragment");
+				model.addAttribute("contentHead", "addnoticeFragmentHead");
+				return "admin/adminlayout";
+			} else {
+				System.out.println("권한없음");
+			}
+		}
+		return "redirect:/";
 	}
 
 	@GetMapping("/product/add")
-	public String getProductAddPage(Model model) {
-		model.addAttribute("title", "상품추가페이지");
-		model.addAttribute("path", "/admin/addproduct");
-		model.addAttribute("content", "addproductFragment");
-		model.addAttribute("contentHead", "addproductFragmentHead");
-		return "admin/adminlayout";
+	public String getProductAddPage(Model model, HttpSession session) {
+		String userRoleString = (String) session.getAttribute("userRole");
+
+		if (userRoleString != null) {
+			User.Role userRole = User.Role.valueOf(userRoleString);
+
+			if (User.Role.ADMIN.equals(userRole)) {
+				model.addAttribute("title", "상품추가페이지");
+				model.addAttribute("path", "/admin/addproduct");
+				model.addAttribute("content", "addproductFragment");
+				model.addAttribute("contentHead", "addproductFragmentHead");
+				return "admin/adminlayout";
+			} else {
+				System.out.println("권한없음");
+			}
+		}
+		return "redirect:/";
 	}
-    @PostMapping("/product/add")
-    public String addCar(@RequestParam("image") MultipartFile imageFile, @RequestParam Map<String, String> data) {
 
-        int imgId = imgService.addImgAndGetId(imageFile);
-        int brand = Integer.parseInt(data.get("brand"));
-        int carType = Integer.parseInt(data.get("carType"));
-        int price = Integer.parseInt(data.get("price"));
+	@PostMapping("/product/add")
+	public String addCar(@RequestParam("image") MultipartFile imageFile, @RequestParam Map<String, String> data,
+			HttpSession session) {
+		String userRoleString = (String) session.getAttribute("userRole");
 
-        carService.addCar(new Car(data.get("title"),
-                data.get("content"),
-                price,
-                imgId,
-                brand,
-                carType));
+		if (userRoleString != null) {
+			User.Role userRole = User.Role.valueOf(userRoleString);
 
-        return "redirect:/admin/notice";
-    }
+			if (User.Role.ADMIN.equals(userRole)) {
+				int imgId = imgService.addImgAndGetId(imageFile);
+				int brand = Integer.parseInt(data.get("brand"));
+				int carType = Integer.parseInt(data.get("carType"));
+				int price = Integer.parseInt(data.get("price"));
 
+				carService.addCar(new Car(data.get("title"), data.get("content"), price, imgId, brand, carType));
+
+				return "redirect:/admin/notice";
+			} else {
+				System.out.println("권한없음");
+			}
+		}
+		return "redirect:/";
+	}
 
 	@GetMapping("/product/list")
-	public String getProductListPage(Model model) {
+	public String getProductListPage(Model model, @RequestParam(defaultValue = "1", name = "page") int page,
+			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
+		List<Reservation> reservations = reservationService.getReservationByPage(page, pageSize);
+		int totalBoards = reservationService.getPageCount();
+		int totalPages = (int) Math.ceil((double) totalBoards / pageSize);
+		model.addAttribute("reservations", reservations);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("title", "예약상품조회페이지");
 		model.addAttribute("path", "/admin/productlist");
 		model.addAttribute("content", "productlistFragment");
 		model.addAttribute("contentHead", "productlistFragmentHead");
 		return "admin/adminlayout";
+	}
+
+	@PostMapping("/product/delivery")
+	public String delivery(@RequestParam("selectedUsers") int[] selectedUsers, HttpSession session) {
+		String userRoleString = (String) session.getAttribute("userRole");
+
+		if (userRoleString != null) {
+			User.Role userRole = User.Role.valueOf(userRoleString);
+
+			if (User.Role.ADMIN.equals(userRole)) {
+				reservationService.delivery(selectedUsers);
+				return "redirect:/admin/product/list";
+			} else {
+				System.out.println("권한없음");
+			}
+		}
+		return "redirect:/";
 	}
 
 	@GetMapping("/user/list")

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
     <head> </head>
-
     <body>
         <div th:fragment="hotProductFragment" id="content">
             <div class="new">
@@ -10,19 +9,19 @@
                         <h2 class="fonttype">Hot<br />Product</h2>
                         <p class="fonttype">가장 인기 많은 자동차들</p>
                     </div>
-                    <div class="toparea">
-                        <div class="box new1">
-                            <a class="fonttype" href="#">
+                    <ul class="toparea">
+                        <li class="box new1" th:each="car, iterStat : ${hot}">
+                            <a class="fonttype" th:href="@{'/product/buy/' + ${car.id}}">
                                 <img
-                                    src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_1699945409grwui60w6u.jpg"
+                                    th:src="${car.url}"
                                     alt=""
                                     width="392"
                                     height="205"
                                 />
                                 <div class="ondiv">
                                     <div class="align">
-                                        <div class="cate">PEN</div>
-                                        <div class="name">FX ZETA C3</div>
+                                        <div class="name" th:text="${car.name}">PEN</div>
+                                        <div class="price" th:text="${car.price}+'만원'">FX ZETA C3</div>
                                         <div class="plus">
                                             <div></div>
                                             <div></div>
@@ -30,70 +29,10 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                        <div class="box new2">
-                            <a class="fonttype" href="#">
-                                <img
-                                    src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_169994521784nzg4whv7.jpg"
-                                    alt=""
-                                    width="786"
-                                    height="360"
-                                />
-                                <div class="ondiv">
-                                    <div class="align">
-                                        <div class="cate">NOTE</div>
-                                        <div class="name">지퀀스</div>
-                                        <div class="plus">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        </li>
+                        </ul>
                     </div>
-                    <div class="btmarea">
-                        <div class="box new3">
-                            <a class="fonttype" href="#">
-                                <img
-                                    src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_16999453586u57dzgmw0.jpg"
-                                    alt=""
-                                    width="392"
-                                    height="292"
-                                />
-                                <div class="ondiv">
-                                    <div class="align">
-                                        <div class="cate">SHARP</div>
-                                        <div class="name">제니스7샤프</div>
-                                        <div class="plus">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="box new4">
-                            <a class="fonttype" href="#">
-                                <img
-                                    src="https://dfrkkcv2hg1jc.cloudfront.net/data/main/file1_1681087061mb8i5l6zdx.jpg"
-                                    alt=""
-                                    width="450"
-                                    height="439"
-                                />
-                                <div class="ondiv">
-                                    <div class="align">
-                                        <div class="cate">FOUNTAIN PEN</div>
-                                        <div class="name">153 아이디 만년필</div>
-                                        <div class="plus">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

@@ -42,4 +42,13 @@ public class CarService {
     	Car car = carDAO.get(id);
 		return car;
     }
+    public void updateLikesCount(int carId, int likesCount) {
+        carDAO.updateLikesCount(carId, likesCount);
+    }
+    public List<Car> getHotList() {
+        return carDAO.getHotList();
+    }
+	public List<Car> getBestList(int carTyepId) {
+		return carDAO.getBestList(carTyepId);
+	}
 }

@@ -18,25 +18,9 @@
                     <div class="mypage-address" th:text="${session.userAddress}">주소</div>
                 </div>
                 <div class="mypage-reservation">
-                    <li class="mypage-reservationBox">
-                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
-                        <div class="mypage-reservation-name">예약차량 이름</div>
-                    </li>
-                    <li class="mypage-reservationBox">
-                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
-                        <div class="mypage-reservation-name">예약차량 이름</div>
-                    </li>
-                    <li class="mypage-reservationBox">
-                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
-                        <div class="mypage-reservation-name">예약차량 이름</div>
-                    </li>
-                    <li class="mypage-reservationBox">
-                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
-                        <div class="mypage-reservation-name">예약차량 이름</div>
-                    </li>
-                    <li class="mypage-reservationBox">
-                        <img class="mypage-img" th:src="@{/imgs/brandcar.jpg}" />
-                        <div class="mypage-reservation-name">예약차량 이름</div>
+                    <li class="mypage-reservationBox" th:each="rs : ${reservations}">
+                        <img class="mypage-img" th:src="${rs.url}" />
+                        <div class="mypage-reservation-name" th:text="${rs.carName}">예약차량 이름</div>
                     </li>
                 </div>
                 <form class="mypage-withdraw" th:action="@{/mypage/delete}" method="post">

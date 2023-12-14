@@ -1,5 +1,6 @@
-package com.kyungil.webcar.likes.domain;
+package com.kyungil.webcar.reservation.domain;
 
+import java.sql.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +11,19 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Likes {
+public class Reservation {
 	private int id;
+	private Timestamp createdAt;
 	@NonNull
 	private int userId;
 	@NonNull
+	private int imgId;
+	@NonNull
 	private int carId;
-
+	private String userName;
+	private String userAddress;
+	private String carName;
+	private String carContent;
+	private String url;
+	
 }

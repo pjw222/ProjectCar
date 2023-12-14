@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
-    <head th:fragment="reservationFragmentHead"> 
+    <head th:fragment="reservationFragmentHead">
         <link rel="stylesheet" th:href="@{/styles/product/reservation.css}" />
     </head>
 
     <body>
-        <div class="container" th:fragment="reservationFragment">
+        <div class="container" th:fragment="reservationFragment" th:each="car : ${carList}" th:object="${car}">
             <div class="item-box">
                 <img class="item-img" th:src="@{/imgs/carsell.png}" />
             </div>
             <div class="reservation-box">
-                <span class="reservation-title">판매 차량 이름</span>
+                <span class="reservation-title" th:text="${car.name}">판매 차량 이름</span>
                 <div class="reservation-imgbox">
-                    <img class="reservation-img" th:src="@{/imgs/brandcar.jpg}"/>
+                    <img class="reservation-img" th:src="${car.url}" />
                 </div>
-                <div class="reservation-name">예약자 이름 :</div>
-                <div class="reservation-price">
-                    가격 :10000원
-                </div>
-                <div class="reservation-content">
-                    차량 설명
-                </div>
-                <div class="reservation-address">주소 </div>
-                <button class="reservation-check" >
-                    결제 버튼
-                </button>
+                <div class="reservation-name" th:text="'예약자 :'+${session.userName}">예약자 이름 :</div>
+                <div class="reservation-price" th:text="${car.price}+'만원'">가격 :10000원</div>
+                <div class="reservation-content" th:text="${car.content}">차량 설명</div>
+                <div class="reservation-address" th:text="'받으실 주소 : '+${session.userAddress}">주소</div>
+                <div th:text="${car.imgId}"></div>
+                <form th:action="@{/product/reservation/add}" class="reservation-check" method="post">
+                    <input type="hidden" th:value="${car.id}" name="carId">
+                    <input type="hidden" th:value="${car.imgId}" name="imgId">
+                    <button>결제 버튼</button>
+                </form>
             </div>
         </div>
     </body>

@@ -10,48 +10,39 @@
             <div th:replace="/admin/adminimg :: adminimgFragment"></div>
             <div class="productlist-container">
                 <ul class="productlist-box">
-                    <form th:action="@{admin/product/delivery}">
-                    <li>
-                        <div class="product-name">예약상품이름</div>
-                        <div class="product-user">예약자</div>
-                        <div class="product-time">예약일자</div>
+                    <form th:action="@{/admin/product/delivery}" method="post">
+                    <li th:each="rs : ${reservations}">
+                        <div class="product-name" th:text="${rs.carName}">예약상품이름</div>
+                        <div class="product-user" th:text="${rs.userName}">예약자</div>
+                        <div class="product-time" th:text="${rs.createdAt}">예약일자</div>
                         <div>
-                            <input type="checkbox"  />
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-name">예약상품이름</div>
-                        <div class="product-user">예약자</div>
-                        <div class="product-time">예약일자</div>
-                        <div>
-                            <input type="checkbox"  />
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-name">예약상품이름</div>
-                        <div class="product-user">예약자</div>
-                        <div class="product-time">예약일자</div>
-                        <div>
-                            <input type="checkbox"  />
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-name">예약상품이름</div>
-                        <div class="product-user">예약자</div>
-                        <div class="product-time">예약일자</div>
-                        <div>
-                            <input type="checkbox"  />
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-name">예약상품이름</div>
-                        <div class="product-user">예약자</div>
-                        <div class="product-time">예약일자</div>
-                        <div>
-                            <input type="checkbox"  />
+                            <input type="checkbox" name="selectedUsers" th:value="${rs.id}" />
                         </div>
                     </li>
                 </ul>
+                <div class="pagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item" th:if="${currentPage > 1}">
+                                <a class="page-link" th:href="@{'/admin/product/list?page=' + *{currentPage - 1}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li
+                                class="page-item"
+                                th:each="pageNumber : *{#numbers.sequence(1, totalPages)}"
+                                th:classappend="${pageNumber == currentPage} ? 'active' : ''"
+                            >
+                                <a class="page-link" th:href="@{'?page=' + *{pageNumber}}" th:text="${pageNumber}">1</a>
+                            </li>
+                            <li class="page-item" th:if="*{currentPage < totalPages}">
+                                <a class="page-link" th:href="@{'/admin/product/list?page=' + *{currentPage + 1}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
                 <div class="delivery-box">
                     <button>배송 완료</button>
                 </div>

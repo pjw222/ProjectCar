@@ -1,8 +1,8 @@
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
     <head th:fragment="mainFragmentHead">
-        <link rel="stylesheet" href="/styles/main/main.css" />
+        <link rel="stylesheet" th:href="@{/styles/main/main.css}" />
         <head th:fragment="popupFragmentHead">
-            <link rel="stylesheet" href="styles/popup.css">
+            <link rel="stylesheet" th:href="@{/styles/popup.css}">
         </head>
     </head>
     <body>

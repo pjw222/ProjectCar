@@ -31,39 +31,55 @@ public class CarDAO {
 				car.getName(), car.getContent(), car.getPrice(), 0, car.getImgId(), car.getBrandId(),
 				car.getCarTypeId());
 	}
-	
+
 	public List<Car> getCarList(int brandId) {
 		return jdbcTemplate.query(
-			    "select car.*, img.url from car join img on car.img_id = img.id where car.brand_id = ? order by car.id",
-			    mapper,
-			    brandId
-			);	
+				"select car.*, img.url from car join img on car.img_id = img.id where car.brand_id = ? order by car.id",
+				mapper, brandId);
 	}
+
 	public List<Car> getCarTypeList(int carTyeId) {
 		return jdbcTemplate.query(
-			    "select car.*, img.url from car join img on car.img_id = img.id where car.cartype_id = ? order by car.id",
-			    mapper,
-			    carTyeId
-			);	
+				"select car.*, img.url from car join img on car.img_id = img.id where car.cartype_id = ? order by car.id",
+				mapper, carTyeId);
 	}
+
 	public List<Car> getCarListByPage(int brandId, int offset, int pageSize) {
-	    String sql = "SELECT car.*, img.url FROM car JOIN img ON car.img_id = img.id WHERE car.brand_id = ? ORDER BY car.id DESC LIMIT ?,?";
-	    return jdbcTemplate.query(sql, mapper, brandId, offset, pageSize);
+		String sql = "SELECT car.*, img.url FROM car JOIN img ON car.img_id = img.id WHERE car.brand_id = ? ORDER BY car.id DESC LIMIT ?,?";
+		return jdbcTemplate.query(sql, mapper, brandId, offset, pageSize);
 	}
+
 	public List<Car> getCarTypeListByPage(int carTypeId, int offset, int pageSize) {
-	    String sql = "SELECT car.*, img.url FROM car JOIN img ON car.img_id = img.id WHERE car.cartype_id = ? ORDER BY car.id DESC LIMIT ?,?";
-	    return jdbcTemplate.query(sql, mapper, carTypeId, offset, pageSize);
+		String sql = "SELECT car.*, img.url FROM car JOIN img ON car.img_id = img.id WHERE car.cartype_id = ? ORDER BY car.id DESC LIMIT ?,?";
+		return jdbcTemplate.query(sql, mapper, carTypeId, offset, pageSize);
 	}
 
 	public int getCount(int brandId) {
-		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM car where brand_id = ?", Integer.class,brandId);
+		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM car where brand_id = ?", Integer.class, brandId);
 	}
+
 	public int getTypeCount(int carTyepId) {
-		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM car where cartype_id = ?", Integer.class,carTyepId);
+		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM car where cartype_id = ?", Integer.class, carTyepId);
 	}
+
 	public Car get(int id) {
-		return jdbcTemplate.queryForObject(
-				"select a.*, b.url from car a join img b on a.img_id = b.id where a.id = ?",
+		return jdbcTemplate.queryForObject("select a.*, b.url from car a join img b on a.img_id = b.id where a.id = ?",
 				mapper, id);
+	}
+
+	public void updateLikesCount(int carId, int likesCount) {
+		String query = "UPDATE car SET likes_count = ? WHERE id = ?";
+		jdbcTemplate.update(query, likesCount, carId);
+	}
+
+	public List<Car> getBestList(int cartypeId) {
+		String sql = "SELECT car.*, img.url FROM car JOIN img ON car.img_id = img.id WHERE car.cartype_id = ? ORDER BY car.likes_count DESC LIMIT 8";
+
+		return jdbcTemplate.query(sql, mapper, cartypeId);
+	}
+	public List<Car> getHotList() {
+		String sql = "SELECT car.*, img.url FROM car JOIN img ON car.img_id = img.id ORDER BY car.likes_count DESC LIMIT 4";
+
+		return jdbcTemplate.query(sql, mapper);
 	}
 }

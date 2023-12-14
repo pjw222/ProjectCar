@@ -1,31 +1,42 @@
 package com.kyungil.webcar.likes.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import com.kyungil.webcar.likes.domain.Likes;
+
 
 
 @Repository
 public class LikesDAO {
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-    // 사용자가 특정 차량을 좋아요했는지 여부를 확인
-    public boolean isLiked(int userId, int carId) {
-        String sql = "SELECT COUNT(*) FROM likes WHERE user_id = ? AND car_id = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, userId, carId) > 0;
+    private RowMapper<Likes> mapper = new RowMapper<Likes>() {
+        @Override
+        public Likes mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Likes(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("car_id"));
+        }
+    };
+
+    public void toggleLike(int userId, int carId) {
+        String query = "INSERT INTO likes (user_id, car_id) VALUES (?, ?) ON DUPLICATE KEY UPDATE user_id = VALUES(user_id), car_id = VALUES(car_id)";
+        jdbcTemplate.update(query, userId, carId);
     }
 
-    // 좋아요 상태 토글
-    public void toggleLike(int userId, int carId) {
-        if (isLiked(userId, carId)) {
-            // 이미 좋아요한 경우, 좋아요 취소
-            String deleteSql = "DELETE FROM likes WHERE user_id = ? AND car_id = ?";
-            jdbcTemplate.update(deleteSql, userId, carId);
-        } else {
-            // 좋아요하지 않은 경우, 좋아요 추가
-            String insertSql = "INSERT INTO likes (user_id, car_id) VALUES (?, ?)";
-            jdbcTemplate.update(insertSql, userId, carId);
-        }
+    public int getLikesCount(int carId) {
+        String query = "SELECT COUNT(*) FROM likes WHERE car_id = ?";
+        return jdbcTemplate.queryForObject(query, Integer.class, carId);
+    }
+    public boolean hasUserLiked(int userId, int carId) {
+        String query = "SELECT COUNT(*) FROM likes WHERE user_id = ? AND car_id = ?";
+        int count = jdbcTemplate.queryForObject(query, Integer.class, userId, carId);
+        return count > 0;
     }
 }
+

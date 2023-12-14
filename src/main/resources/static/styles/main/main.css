@@ -51,12 +51,12 @@
     opacity: 1;
 }
 
-.ondiv .cate {
+.ondiv .name {
     font-size: 18px;
     font-weight: bold;
 }
 
-.ondiv .name {
+.ondiv .price {
     font-size: 16px;
     margin-top: 5px;
 }

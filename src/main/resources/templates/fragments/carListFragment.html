@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <div th:fragment="carList">
+        <ul class="wrapper_ul">
+            <li th:each="car : ${bestSmall}">
+                <a class="fonttype" th:href="@{'/product/buy/' + ${car.id}}">
+                    <div class="thum">
+                        <img th:src="${car.url}" />
+                    </div>
+                    <div class="info">
+                        <div class="name" th:text="${car.name}"></div>
+                        <div class="price" th:text="${car.price}+'만원'"></div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <ul class="wrapper_ul">
+            <li th:each="car : ${bestMiddle}">
+                <a class="fonttype" th:href="@{'/product/buy/' + ${car.id}}">
+                    <div class="thum">
+                        <img th:src="${car.url}" />
+                    </div>
+                    <div class="info">
+                        <div class="name" th:text="${car.name}"></div>
+                        <div class="price" th:text="${car.price}+'만원'"></div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <ul class="wrapper_ul">
+            <li th:each="car : ${bestLarge}">
+                <a class="fonttype" th:href="@{'/product/buy/' + ${car.id}}">
+                    <div class="thum">
+                        <img th:src="${car.url}" />
+                    </div>
+                    <div class="info">
+                        <div class="name" th:text="${car.name}"></div>
+                        <div class="price" th:text="${car.price}+'만원'"></div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <ul class="wrapper_ul">
+            <li th:each="car : ${bestSports}">
+                <a class="fonttype" th:href="@{'/product/buy/' + ${car.id}}">
+                    <div class="thum">
+                        <img th:src="${car.url}" />
+                    </div>
+                    <div class="info">
+                        <div class="name" th:text="${car.name}"></div>
+                        <div class="price" th:text="${car.price}+'만원'"></div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

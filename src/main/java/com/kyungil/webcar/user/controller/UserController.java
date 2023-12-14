@@ -1,5 +1,6 @@
 package com.kyungil.webcar.user.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kyungil.webcar.reservation.domain.Reservation;
+import com.kyungil.webcar.reservation.service.ReservationService;
 import com.kyungil.webcar.user.domain.User;
 import com.kyungil.webcar.user.service.UserService;
 
@@ -17,8 +20,9 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class UserController {
 	@Autowired
-	UserService userService;
-
+	private UserService userService;
+	@Autowired
+	private ReservationService reservationService;
 	@GetMapping("/regist")
 	public String getRegist(Model model) {
 		model.addAttribute("title", "회원가입");
@@ -74,12 +78,23 @@ public class UserController {
 
 	@GetMapping("/mypage")
 	public String getMyPage(Model model, HttpSession session) {
-	    model.addAttribute("title", "마이페이지");
-	    model.addAttribute("path", "/user/myPage");
-	    model.addAttribute("content", "myPageFragment");
-	    model.addAttribute("contentHead", "myPageFragmentHead");
-	    return "basic/layout";
+	    try {
+	        int userId = (Integer) session.getAttribute("userId");
+	        List<Reservation> reservations = reservationService.getReservation(userId);
+	        
+	        model.addAttribute("title", "마이페이지");
+	        model.addAttribute("path", "/user/myPage");
+	        model.addAttribute("content", "myPageFragment");
+	        model.addAttribute("contentHead", "myPageFragmentHead");
+	        model.addAttribute("reservations", reservations);
+
+	        return "basic/layout";
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return "redirect:/";
+	    }
 	}
+
 	@PostMapping("/mypage/delete")
 	public String deleteUser(HttpSession session) {
 	    int userId =(int) session.getAttribute("userId");

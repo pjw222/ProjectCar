@@ -19,14 +19,14 @@ public class UserDAO {
 		@Override
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 			// TODO Auto-generated method stub
-			return new User(rs.getInt("id"), rs.getString("user_id"), rs.getString("password"), rs.getString("name"),
+			return new User(rs.getInt("id"), rs.getString("user_id"), rs.getString("password"), rs.getString("user_name"),
 					rs.getString("phone"), rs.getString("address"), rs.getInt("gender"), rs.getInt("is_admin"),
 					rs.getTimestamp("created_at"));
 		}
 	};
 
 	public void regist(User user) {
-		jdbcTemplate.update("insert into users (user_id, password, name, phone, address, gender) values(?,?,?,?,?,?)",
+		jdbcTemplate.update("insert into users (user_id, password, user_name, phone, address, gender) values(?,?,?,?,?,?)",
 				user.getUserId(), user.getPassword(), user.getName(), user.getPhone(), user.getAddress(),
 				user.getGender());
 	}

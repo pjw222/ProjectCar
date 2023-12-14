@@ -24,7 +24,7 @@ public class NoticeDAO {
 					rs.getTimestamp("created_at"),
 					rs.getInt("is_withdrew"),
 					rs.getInt("user_id"),
-					rs.getString("name")
+					rs.getString("user_name")
 					);
 		}
 	};
@@ -32,13 +32,13 @@ public class NoticeDAO {
 
 	public Notice get(int id) {
 		return jdbcTemplate.queryForObject(
-				"select a.*, b.name from notices a join users b on a.user_id = b.id where a.id = ?",
+				"select a.*, b.user_name from notices a join users b on a.user_id = b.id where a.id = ?",
 				mapper, id);
 	}
 
 	public List<Notice> getAll() {
 		return jdbcTemplate.query(
-				"select notices.*, users.name from notices join users on notices.user_id=users.id order by notices.id",
+				"select notices.*, users.user_name from notices join users on notices.user_id=users.id order by notices.id",
 				mapper);
 	}
 	
@@ -50,7 +50,7 @@ public class NoticeDAO {
         jdbcTemplate.update("DELETE FROM notices WHERE id=?", noticeId);
     }
 	public List<Notice> getNoticesByPage(int offset, int pageSize) {
-		String sql = "select notices.*, users.name from notices join users on notices.user_id=users.id order by notices.id desc limit ?,?";
+		String sql = "select notices.*, users.user_name from notices join users on notices.user_id=users.id order by notices.id desc limit ?,?";
 		return jdbcTemplate.query(sql, mapper, offset, pageSize);
 	}
 

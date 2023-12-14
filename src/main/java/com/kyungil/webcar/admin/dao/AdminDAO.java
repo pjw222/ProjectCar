@@ -20,7 +20,7 @@ public class AdminDAO {
 		@Override
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 			// TODO Auto-generated method stub
-			return new User(rs.getInt("id"), rs.getString("user_id"), rs.getString("password"), rs.getString("name"),
+			return new User(rs.getInt("id"), rs.getString("user_id"), rs.getString("password"), rs.getString("user_name"),
 					rs.getString("phone"), rs.getString("address"), rs.getInt("gender"), rs.getInt("is_admin"),
 					rs.getTimestamp("created_at"));
 		}

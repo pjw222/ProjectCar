@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
-    <head th:fragment="buyFragmentHead"> 
+    <head th:fragment="buyFragmentHead">
         <link rel="stylesheet" th:href="@{/styles/product/buy.css}" />
         <link rel="stylesheet" th:href="@{/styles/main/main.css}" />
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     </head>
 
     <body>
@@ -13,27 +14,86 @@
             <div class="sell-box">
                 <span class="sell-title" th:text="${car.name}">판매 차량 이름</span>
                 <div class="sell-imgbox">
-                    <img class="sell-img" th:src="${car.url}"/>
+                    <img class="sell-img" th:src="${car.url}" />
                 </div>
-                <div class="sell-price" th:text="${car.price}+'만원'">
-                    가격 :10000원
+                <div class="sell-price" th:text="${car.price}+'만원'">가격 :10000원</div>
+                <div class="sell-content-title">차량 설명</div>
+                <div class="sell-content" th:text="${car.content}">차량 설명 내용</div>
+                <!-- <a th:href="@{'/product/buy/' + ${car.id}}"></a> -->
+                <a class="sell-check" th:href="@{'/product/reservation/' + ${car.id}}">예약 버튼</a>
+                <div class="like-info">
+                    <form id="likeForm" th:action="@{/product/like/{carId}(carId=${car.id})}" th:method="post">
+                        <button type="submit">좋아요</button>
+                    </form>
+                    <span class="likes-count" th:text="'좋아요 갯수 : ' + ${car.likesCount}"></span>
                 </div>
-                <div class="sell-content-title">
-                    차량 설명
-                </div>
-                <div class="sell-content" th:text="${car.content}">차량 설명 내용 </div>
-                <button class="sell-check" th:onclick="'location.href=\'/product/reservation\''">
-                    예약 버튼
-                </button>
             </div>
-            <button class="like-button" th:onclick="'location.href=\'/product/like?carId=\' + ${car.id}'">
-                <span th:if="${isLiked}">좋아요 취소</span>
-                <span th:unless="${isLiked}">좋아요</span>
-            </button>
-            
+
             <div class="bestProduct">
-            <div th:replace="/main/bestproduct :: bestProductFragment"></div>
+                <div th:replace="/main/bestproduct :: bestProductFragment"></div>
             </div>
+
+            <script th:inline="javascript">
+                              $(document).ready(function() {
+                    var isSubmitting = false;
+
+                    $('#likeForm').submit(function(e) {
+                        e.preventDefault();
+
+                        if (isSubmitting) return;
+
+                        isSubmitting = true;
+
+                        var carId = /*[[${car.id}]]*/;
+                        var likeButton = $('#likeForm button');
+
+                        likeButton.prop('disabled', true);
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/product/like/' + carId,
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    updateLikesCount(carId, function() {
+                                        isSubmitting = false;
+                                        likeButton.prop('disabled', false);
+                                    });
+                                    location.reload();
+                                } else {
+                                    alert(response.message);
+                                    isSubmitting = false;
+                                    likeButton.prop('disabled', false);
+                                }
+                            },
+                            error: function(error) {
+                                alert('로그인 해주세요 ');
+                                isSubmitting = false;
+                                likeButton.prop('disabled', false);
+                            }
+                        });
+                    });
+
+                    function updateLikesCount(carId, callback) {
+                        $.ajax({
+                            type: 'GET',
+                            url: '/product/likesCount/' + carId,
+                            success: function(likesCount) {
+                                console.log('Likes count updated to: ' + likesCount);
+
+                                $('.likes-count').text('좋아요 갯수 : ' + likesCount);
+
+
+                                if (callback && typeof callback === 'function') {
+                                    callback();
+                                }
+                            },
+                            error: function(error) {
+                                console.error(error);
+                            }
+                        });
+                    }
+                });
+            </script>
         </div>
     </body>
 </html>
