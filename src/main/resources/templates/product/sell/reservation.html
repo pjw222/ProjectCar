@@ -18,7 +18,6 @@
                 <div class="reservation-price" th:text="${car.price}+'만원'">가격 :10000원</div>
                 <div class="reservation-content" th:text="${car.content}">차량 설명</div>
                 <div class="reservation-address" th:text="'받으실 주소 : '+${session.userAddress}">주소</div>
-                <div th:text="${car.imgId}"></div>
                 <form th:action="@{/product/reservation/add}" class="reservation-check" method="post">
                     <input type="hidden" th:value="${car.id}" name="carId">
                     <input type="hidden" th:value="${car.imgId}" name="imgId">

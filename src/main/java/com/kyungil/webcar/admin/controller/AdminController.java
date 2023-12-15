@@ -191,7 +191,9 @@ public class AdminController {
 			User.Role userRole = User.Role.valueOf(userRoleString);
 			if (User.Role.ADMIN.equals(userRole)) {
 				User user = adminService.get(userId);
+				List<Reservation> reservations = reservationService.getReservation(userId);
 				model.addAttribute("user", user);
+				model.addAttribute("reservations", reservations);
 				model.addAttribute("title", "회원상세보기페이지");
 				model.addAttribute("path", "/admin/userdetail");
 				model.addAttribute("content", "userdetailFragment");

@@ -17,30 +17,12 @@
                         <div class="userdetail-address" th:text="주소+':'+${user.address}">주소</div>
                         <div class="userdetail-time" th:text="생성+' '+일자 + ':' +${#dates.format(user.created_at, 'yyyy-MM-dd HH:mm')}">회원 생성 일자</div>
                     </div>
-
                     <div class="userdetail-reservation">
-                        <li class="userdetail-reservationBox">
-                            <img class="userdetail-img" th:src="@{/imgs/brandcar.jpg}" />
-                            <div class="userdetail-reservation-name">예약차량 이름</div>
-                        </li>
-                        <li class="userdetail-reservationBox">
-                            <img class="userdetail-img" th:src="@{/imgs/brandcar.jpg}" />
-                            <div class="userdetail-reservation-name">예약차량 이름</div>
-                        </li>
-                        <li class="userdetail-reservationBox">
-                            <img class="userdetail-img" th:src="@{/imgs/brandcar.jpg}" />
-                            <div class="userdetail-reservation-name">예약차량 이름</div>
-                        </li>
-                        <li class="userdetail-reservationBox">
-                            <img class="userdetail-img" th:src="@{/imgs/brandcar.jpg}" />
-                            <div class="userdetail-reservation-name">예약차량 이름</div>
-                        </li>
-                        <li class="userdetail-reservationBox">
-                            <img class="userdetail-img" th:src="@{/imgs/brandcar.jpg}" />
-                            <div class="userdetail-reservation-name">예약차량 이름</div>
+                        <li class="userdetail-reservationBox" th:each="rs : ${reservations}">
+                            <img class="userdetail-img" th:src="${rs.url}" />
+                            <div class="userdetail-reservation-name" th:text="${rs.carName}">예약차량 이름</div>
                         </li>
                     </div>
-                    
                     <form class="admin-box" th:action="@{'/admin/user/delete/'}+${user.id}" method="post">
                             <button type="submit">강퇴</button>
                     </form>

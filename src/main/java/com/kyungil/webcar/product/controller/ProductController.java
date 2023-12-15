@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kyungil.webcar.admin.domain.User;
 import com.kyungil.webcar.likes.service.LikesService;
 import com.kyungil.webcar.product.domain.Car;
 import com.kyungil.webcar.product.service.CarService;
@@ -319,28 +320,41 @@ public class ProductController {
 	}
 
 	@GetMapping("/reservation/{buyId}")
-	public String getReservationPage(@PathVariable("buyId") int buyId, Model model) {
-		Car car = carService.get(buyId);
-		model.addAttribute("carList", car);
-		model.addAttribute("title", "예약페이지");
-		model.addAttribute("path", "/product/sell/reservation");
-		model.addAttribute("content", "reservationFragment");
-		model.addAttribute("contentHead", "reservationFragmentHead");
+	public String getReservationPage(@PathVariable("buyId") int buyId, Model model, HttpSession session) {
+		String userRoleString = (String) session.getAttribute("userRole");
 
-		return "basic/layout";
+		if (userRoleString != null) {
+			User.Role userRole = User.Role.valueOf(userRoleString);
+
+			if (User.Role.USER.equals(userRole) || User.Role.ADMIN.equals(userRole)) {
+
+				Car car = carService.get(buyId);
+				model.addAttribute("carList", car);
+				model.addAttribute("title", "예약페이지");
+				model.addAttribute("path", "/product/sell/reservation");
+				model.addAttribute("content", "reservationFragment");
+				model.addAttribute("contentHead", "reservationFragmentHead");
+
+				return "basic/layout";
+			} else {
+				System.out.println("권한없음");
+			}
+		}
+		return "redirect:/";
 	}
+
 	@PostMapping("/reservation/add")
 	public String PostReservation(@RequestParam Map<String, String> data, HttpSession session) {
 		try {
-	        int userId = (Integer) session.getAttribute("userId");    
-	        int imgId = Integer.parseInt(data.get("imgId"));
-	        int carId = Integer.parseInt(data.get("carId"));
-			reservationService.add(new Reservation(userId,imgId,carId));
+			int userId = (Integer) session.getAttribute("userId");
+			int imgId = Integer.parseInt(data.get("imgId"));
+			int carId = Integer.parseInt(data.get("carId"));
+			reservationService.add(new Reservation(userId, imgId, carId));
 			System.out.println("성공");
 			return "redirect:/";
 
 		} catch (Exception e) {
-			 e.printStackTrace();
+			e.printStackTrace();
 			System.out.println(data.get("imgId"));
 			System.out.println("실패");
 			return "redirect:/";
