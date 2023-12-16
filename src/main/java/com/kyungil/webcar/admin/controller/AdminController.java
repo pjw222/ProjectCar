@@ -16,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kyungil.webcar.admin.domain.User;
 import com.kyungil.webcar.admin.service.AdminService;
 import com.kyungil.webcar.img.service.ImgService;
+import com.kyungil.webcar.notice.domain.Notice;
+import com.kyungil.webcar.notice.service.NoticeService;
 import com.kyungil.webcar.product.domain.Car;
 import com.kyungil.webcar.product.service.CarService;
 import com.kyungil.webcar.reservation.domain.Reservation;
@@ -34,7 +36,38 @@ public class AdminController {
 	private ImgService imgService;
 	@Autowired
 	private ReservationService reservationService;
+	@Autowired
+	private NoticeService noticeService;
+	@GetMapping("/notice")
+	public String getAdminPage(Model model, @RequestParam(defaultValue = "1", name = "page") int page,
+			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
+		List<Notice> pagedNotices = noticeService.getNoticesByPage(page, pageSize);
 
+		int totalBoards = noticeService.getPageCount();
+		int totalPages = (int) Math.ceil((double) totalBoards / pageSize);
+		model.addAttribute("notices", pagedNotices);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("title", "관리자페이지");
+		model.addAttribute("path", "/admin/notice");
+		model.addAttribute("content", "noticeFragment");
+		model.addAttribute("contentHead", "noticeFragmentHead");
+		return "admin/adminlayout";
+	}
+
+	@PostMapping("/notice/add")
+	public String boardAdd(@RequestParam Map<String, String> data, HttpSession session) {
+		try {
+			int userId = (Integer) session.getAttribute("userId");
+
+			noticeService.add(new Notice(data.get("title"), data.get("content"), userId));
+
+			return "redirect:/admin/notice";
+
+		} catch (Exception e) {
+			return "redirect:/";
+		}
+	}
 	@GetMapping("/notice/add")
 	public String getNoticeAddPage(Model model, HttpSession session) {
 		String userRoleString = (String) session.getAttribute("userRole");
@@ -101,18 +134,29 @@ public class AdminController {
 
 	@GetMapping("/product/list")
 	public String getProductListPage(Model model, @RequestParam(defaultValue = "1", name = "page") int page,
-			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
-		List<Reservation> reservations = reservationService.getReservationByPage(page, pageSize);
-		int totalBoards = reservationService.getPageCount();
-		int totalPages = (int) Math.ceil((double) totalBoards / pageSize);
-		model.addAttribute("reservations", reservations);
-		model.addAttribute("currentPage", page);
-		model.addAttribute("totalPages", totalPages);
-		model.addAttribute("title", "예약상품조회페이지");
-		model.addAttribute("path", "/admin/productlist");
-		model.addAttribute("content", "productlistFragment");
-		model.addAttribute("contentHead", "productlistFragmentHead");
-		return "admin/adminlayout";
+			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize, HttpSession session) {
+		String userRoleString = (String) session.getAttribute("userRole");
+
+		if (userRoleString != null) {
+			User.Role userRole = User.Role.valueOf(userRoleString);
+
+			if (User.Role.ADMIN.equals(userRole)) {
+				List<Reservation> reservations = reservationService.getReservationByPage(page, pageSize);
+				int totalBoards = reservationService.getPageCount();
+				int totalPages = (int) Math.ceil((double) totalBoards / pageSize);
+				model.addAttribute("reservations", reservations);
+				model.addAttribute("currentPage", page);
+				model.addAttribute("totalPages", totalPages);
+				model.addAttribute("title", "예약상품조회페이지");
+				model.addAttribute("path", "/admin/productlist");
+				model.addAttribute("content", "productlistFragment");
+				model.addAttribute("contentHead", "productlistFragmentHead");
+				return "admin/adminlayout";
+			} else {
+				System.out.println("권한없음");
+			}
+		}
+		return "redirect:/";
 	}
 
 	@PostMapping("/product/delivery")
@@ -134,19 +178,30 @@ public class AdminController {
 
 	@GetMapping("/user/list")
 	public String getUserListPage(Model model, @RequestParam(defaultValue = "1", name = "page") int page,
-			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize) {
-		List<User> pageUsers = adminService.getUsersByPage(page, pageSize);
+			@RequestParam(defaultValue = "5", name = "pageSize") int pageSize, HttpSession session) {
+		String userRoleString = (String) session.getAttribute("userRole");
 
-		int totalBoards = adminService.getPageCount();
-		int totalPages = (int) Math.ceil((double) totalBoards / pageSize);
-		model.addAttribute("users", pageUsers);
-		model.addAttribute("currentPage", page);
-		model.addAttribute("totalPages", totalPages);
-		model.addAttribute("title", "회원조회페이지");
-		model.addAttribute("path", "/admin/userlist");
-		model.addAttribute("content", "userlistFragment");
-		model.addAttribute("contentHead", "userlistFragmentHead");
-		return "admin/adminlayout";
+		if (userRoleString != null) {
+			User.Role userRole = User.Role.valueOf(userRoleString);
+
+			if (User.Role.ADMIN.equals(userRole)) {
+				List<User> pageUsers = adminService.getUsersByPage(page, pageSize);
+
+				int totalBoards = adminService.getPageCount();
+				int totalPages = (int) Math.ceil((double) totalBoards / pageSize);
+				model.addAttribute("users", pageUsers);
+				model.addAttribute("currentPage", page);
+				model.addAttribute("totalPages", totalPages);
+				model.addAttribute("title", "회원조회페이지");
+				model.addAttribute("path", "/admin/userlist");
+				model.addAttribute("content", "userlistFragment");
+				model.addAttribute("contentHead", "userlistFragmentHead");
+				return "admin/adminlayout";
+			} else {
+				System.out.println("권한없음");
+			}
+		}
+		return "redirect:/";
 	}
 
 	@PostMapping("/user/delete/{userId}")
