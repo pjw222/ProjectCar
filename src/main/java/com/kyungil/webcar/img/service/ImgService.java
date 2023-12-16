@@ -29,6 +29,10 @@ public class ImgService {
 	private String uploadPath;
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+    public String getUploadPath() {
+        return uploadPath;
+    }
 
 	public int addImgAndGetId(MultipartFile file) {
 		// 이미지가 중복되는지 확인
