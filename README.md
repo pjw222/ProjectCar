@@ -6,9 +6,7 @@
 <br><br><br>
 
 ## 프로젝트 기간
-  12/04 ~ 12/16 
-<br><br><br>
-## 진행기간
+
 ![일정 기간표](https://github.com/pjw222/ProjectCar/assets/142759365/12ffc5c9-b746-4cd9-93cf-56f344562707)
 <br><br>
 ## 진행일정 상세표
