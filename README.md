@@ -13,7 +13,7 @@
 <br><br><br>
 ## 플로우차트
 ![자동차플로우차트](https://github.com/pjw222/ProjectCar/assets/142759365/03257c7e-feaf-4d5e-a293-a72f02f9d2de)
-<img src="![자동차플로우차트](https://github.com/pjw222/ProjectCar/assets/142759365/47fc0fb6-3415-4865-805d-a43bcfd5665e)"  width="700" height="370">
+<img src="https://github.com/pjw222/ProjectCar/assets/142759365/47fc0fb6-3415-4865-805d-a43bcfd5665e" alt="자동차 플로우차트" width="500" height="300">
 
 <br><br><br>
 ## 진행일정
