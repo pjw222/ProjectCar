@@ -21,6 +21,7 @@
 <img src="https://github.com/pjw222/ProjectCar/assets/142759365/23a80f1d-d708-48a5-804b-2f96a30ce6a2" alt="자동차 플로우차트" width="500" height="300">
 <br><br><br>
 ## 진행일정
+<br><br>
 ### 12/04  
   - 기획
   - 설계
