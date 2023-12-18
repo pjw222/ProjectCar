@@ -9,11 +9,16 @@
   <12/16 발표>
 <br><br><br>
 ## ERD
+<br><br><br>
 <img src="https://github.com/pjw222/ProjectCar/assets/142759365/3a814848-4bdc-4822-81f1-0c6ed1324ecd" alt="자동차 ERD" width="500" height="300">
 <br><br><br>
 ## 플로우차트
 <br><br><br>
 <img src="https://github.com/pjw222/ProjectCar/assets/142759365/47fc0fb6-3415-4865-805d-a43bcfd5665e" alt="자동차 플로우차트" width="500" height="300">
+<br><br><br>
+## 시퀸스다이어그ㅐㅁ
+<br><br><br>
+<img src="https://github.com/pjw222/ProjectCar/assets/142759365/23a80f1d-d708-48a5-804b-2f96a30ce6a2" alt="자동차 플로우차트" width="500" height="300">
 <br><br><br>
 ## 진행일정
 ### 12/04  
