@@ -12,6 +12,7 @@
 <img src="https://github.com/pjw222/ProjectCar/assets/142759365/3a814848-4bdc-4822-81f1-0c6ed1324ecd" alt="자동차 ERD" width="500" height="300">
 <br><br><br>
 ## 플로우차트
+<br><br><br>
 <img src="https://github.com/pjw222/ProjectCar/assets/142759365/47fc0fb6-3415-4865-805d-a43bcfd5665e" alt="자동차 플로우차트" width="500" height="300">
 <br><br><br>
 ## 진행일정
