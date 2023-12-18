@@ -1,7 +1,8 @@
 # 
 
 ## 프로젝트
-자동차 판매사이트 (https://projectcar.pjw222.net/)
+- 자동차 판매사이트 (https://projectcar.pjw222.net/)
+- 문서 (https://docs.google.com/document/d/1uT6zlWXWtFy2ZayPpy0wnx4KtYzXX9D2kBStATRQmY8/)
 <br><br><br>
 <br><br><br>
 
