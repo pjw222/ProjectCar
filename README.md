@@ -12,15 +12,15 @@
 ![일정 기간표](https://github.com/pjw222/ProjectCar/assets/142759365/12ffc5c9-b746-4cd9-93cf-56f344562707)
 <br><br>
 ## 진행일정 상세표
-![일정상세표](https://github.com/pjw222/ProjectCar/assets/142759365/950db21c-2828-42ef-bd58-20cd3da2c05b)
+![일정상세표](https://github.com/pjw222/ProjectCar/assets/142759365/d8b056fd-bd16-4f5b-aa4f-388bd1160469)
 <br><br>
 ## 이슈
 ### 이슈목록
--  1.
+1.  
   - 발생 : 구글폰트 글자깨짐 현상
     - 원인 : 가져온 구글 폰트가 font-weight 400까지만 지원
   - 해결 :  font-weight 400이 넘는걸 400으로 변경
-- 2.
+2.
   - 발생 : 배포후 이미지 업로드시 이미지 없음 현상
     - 원인 : 배포후 이미지 업로드 지정 안함
   - 해결 : 이미지 업로드 지정으로 해결
