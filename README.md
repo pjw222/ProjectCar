@@ -11,6 +11,11 @@
 ## ERD
 ![자동차ERD](https://github.com/pjw222/ProjectCar/assets/142759365/3a814848-4bdc-4822-81f1-0c6ed1324ecd)
 <br><br><br>
+## 플로우차트
+![자동차플로우차트](https://github.com/pjw222/ProjectCar/assets/142759365/03257c7e-feaf-4d5e-a293-a72f02f9d2de)
+<img src="(https://github.com/pjw222/ProjectCar/assets/142759365/03257c7e-feaf-4d5e-a293-a72f02f9d2de)"  width="700" height="370">
+
+<br><br><br>
 ## 진행일정
 ### 12/04  
   - 기획
