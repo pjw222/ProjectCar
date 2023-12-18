@@ -8,6 +8,9 @@
   12/04 ~ 12/16 
   <12/16 발표>
 <br><br><br>
+## ERD
+![자동차ERD](https://github.com/pjw222/ProjectCar/assets/142759365/3a814848-4bdc-4822-81f1-0c6ed1324ecd)
+<br><br><br>
 ## 진행일정
 ### 12/04  
   - 기획
