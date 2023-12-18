@@ -4,31 +4,39 @@
 자동차 판매사이트 (https://projectcar.pjw222.net/)
 <br><br><br>
 <br><br><br>
+
 ## 프로젝트 기간
   12/04 ~ 12/16 
   <12/16 발표>
 <br><br><br>
+
 ## ERD
 <br>
 <img src="https://github.com/pjw222/ProjectCar/assets/142759365/3a814848-4bdc-4822-81f1-0c6ed1324ecd" alt="자동차 ERD" width="500" height="300">
 <br>
+
 ## 플로우차트
 <br>
 <img src="https://github.com/pjw222/ProjectCar/assets/142759365/47fc0fb6-3415-4865-805d-a43bcfd5665e" alt="자동차 플로우차트" width="500" height="300">
 <br>
+
 ## 시퀸스다이어그램
 <br>
 <img src="https://github.com/pjw222/ProjectCar/assets/142759365/23a80f1d-d708-48a5-804b-2f96a30ce6a2" alt="자동차 플로우차트" width="500" height="300">
 <br><br><br>
+
 ## 진행일정
+
 <br><br>
 ### 12/04  
   - 기획
   - 설계
 <br><br><br>
+
 ### 12/05 ~ 12/11
   - 각 페이지 UI 완성   
 <br><br><br>
+
 ### 12 / 12
 -  user 회원가입 로그인 로그아웃
 -  마이 페이지 이름 성별 번호 주소 표시 및 회원탈퇴기능 구현
