@@ -9,7 +9,7 @@
 
     <body>
         <div class="container" th:fragment="ssangyongFragment">
-            <div th:replace="/product/brand/brand :: brandFragment"></div>
+            <div th:replace="~{/product/brand/brand :: brandFragment}"></div>
             <div class="pagination">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">

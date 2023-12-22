@@ -7,7 +7,7 @@
 
     <body>
         <div class="container" th:fragment="sportscarFragment">
-            <div th:replace="/product/size/size :: sizeFragment"></div>
+            <div th:replace="~{/product/size/size :: sizeFragment}"></div>
             <div class="pagination">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">

@@ -4,8 +4,8 @@
 
     <body>
         <div th:fragment="sizeFragment">
-            <div th:replace="/product/producthead :: productFragmentHead"></div>
-            <div th:replace="/product/sellpage :: sellpageFragment"></div>
+            <div th:replace="~{/product/producthead :: productFragmentHead}"></div>
+            <div th:replace="~{/product/sellpage :: sellpageFragment}"></div>
         </div>
     </body>
 </html>

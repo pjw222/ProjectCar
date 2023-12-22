@@ -7,7 +7,7 @@
 
     <body>
         <div class="container" th:fragment="noticeFragment">
-            <div th:replace="/notice/noticehead :: noticeHeadFragment"></div>
+            <div th:replace="~{/notice/noticehead :: noticeHeadFragment}"></div>
             <div class="table-container">
                 <table>
                     <thead>

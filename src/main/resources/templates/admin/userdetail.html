@@ -7,7 +7,7 @@
     </head>
     <body>
         <div th:fragment="userdetailFragment" id="adminPage">
-            <div th:replace="/admin/adminimg :: adminimgFragment"></div>
+            <div th:replace="~{/admin/adminimg :: adminimgFragment}"></div>
             <div class="userdetail-container">
                 <div class="userdetail-box">
                     <div class="userdetail-name" th:text="이름+':'+${user.name}">회원 누구누구님</div>

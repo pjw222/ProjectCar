@@ -8,7 +8,7 @@
     <div th:fragment="adminheaderFragment" id="adminheader">
         <div class="d-flex justify-content-between align-items-center px-2 mt-3">
             <div></div>
-            <div th:replace="/user/login :: loginFragment"></div>
+            <div th:replace="~{/user/login :: loginFragment}"></div>
         </div>
         <hr />
         <div class="navbar">

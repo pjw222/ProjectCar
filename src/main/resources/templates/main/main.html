@@ -7,13 +7,13 @@
     </head>
     <body>
         <div th:fragment="mainFragment" id="mainPage">
-            <div th:replace="/basic/popup :: popupFragment"></div>
+            <div th:replace="~{/basic/popup :: popupFragment}"></div>
             <hr />
             <div class="container">
-                <div th:replace="/main/hotproduct :: hotProductFragment"></div>   
+                <div th:replace="~{/main/hotproduct :: hotProductFragment}"></div>   
             </div>
             <hr />
-            <div th:replace="/main/bestproduct :: bestProductFragment"></div>
+            <div th:replace="~{/main/bestproduct :: bestProductFragment}"></div>
             </div>
         </div>
     </body>

@@ -7,7 +7,7 @@
     </head>
     <body>
         <div th:fragment="addproductFragment" id="adminPage">
-            <div th:replace="/admin/adminimg :: adminimgFragment"></div>
+            <div th:replace="~{/admin/adminimg :: adminimgFragment}"></div>
             <div>
                 <form th:action="@{/admin/product/add}" method="post" id="addBoard" class="addproduct-container" enctype="multipart/form-data">
                     <div class="form-floating mb-3">

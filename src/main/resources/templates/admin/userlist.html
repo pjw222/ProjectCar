@@ -8,7 +8,7 @@
     </head>
     <body>
         <div th:fragment="userlistFragment" id="adminPage">
-            <div th:replace="/admin/adminimg :: adminimgFragment"></div>
+            <div th:replace="~{/admin/adminimg :: adminimgFragment}"></div>
                 <form class="userlist-container" th:action="@{/admin/user/addadmin}" method="post">
                     <ul class="userlist-box">
                         <th:block th:each="user : ${users}">
